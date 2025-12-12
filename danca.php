@@ -121,4 +121,5 @@ $url_audio = "https://translate.google.com/translate_tts?ie=UTF-8&q=" . urlencod
 
   </body>
 </html>
+  <script src="theme-toggle.js"></script>
 
