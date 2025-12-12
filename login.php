@@ -171,7 +171,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </label>
 
                 <div class="text-right mt-2">
-                  <a class="text-sm font-medium text-primary hover:underline" href="esqueci_senha.php">Esqueci minha
+                  <a class="text-sm font-medium text-primary hover:underline" href="esqueci_senha.html">Esqueci minha
                     senha</a>
                 </div>
               </div>
