@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contato - Accessibility Fitness</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Reset básico */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+
+      /* CENTRALIZAÇÃO TOTAL NA TELA */
+      display: flex;
+      justify-content: center;
+      /* Centraliza horizontalmente */
+      align-items: center;
+      /* Centraliza verticalmente */
+      min-height: 100vh;
+      /* Garante que o body tenha a altura da tela */
+      background-color: #001f3f;
+      /* Fundo Azul Escuro (do seu tema anterior) */
+      color: #333;
+    }
+
+    /* Estilo do "Cartão" (A caixa branca) */
+    main {
+      background-color: white;
+      width: 100%;
+      max-width: 500px;
+      /* Largura máxima do cartão */
+      padding: 40px;
+      border-radius: 15px;
+      /* Bordas arredondadas */
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+      /* Sombra para destaque */
+      margin: 20px;
+      /* Margem para não colar na borda em celulares */
+    }
+
+    /* Título Centralizado */
+    h1 {
+      text-align: center;
+      color: #004a99;
+      margin-top: 0;
+      margin-bottom: 25px;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: 600;
+      color: #555;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 12px;
+      margin-top: 5px;
+      box-sizing: border-box;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: border-color 0.3s;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: #007bff;
+      outline: none;
+    }
+
+    /* Botão estilo bloco (largura total) */
+    button {
+      width: 100%;
+      margin-top: 25px;
+      padding: 12px;
+      cursor: pointer;
+      background: linear-gradient(135deg, #007bff, #0056b3);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: bold;
+      transition: transform 0.2s;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      background: linear-gradient(135deg, #0056b3, #004085);
+    }
+
+    button:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* Mensagem de sucesso */
+    .msg-sucesso {
+      display: none;
+      background-color: #d4edda;
+      color: #155724;
+      padding: 15px;
+      margin-top: 20px;
+      border: 1px solid #c3e6cb;
+      border-radius: 8px;
+      text-align: center;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <h1>Fale Conosco</h1>
+
+    <form id="formContato">
+
+      <div>
+        <label for="nome">Nome Completo</label>
+        <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
+      </div>
+
+      <div>
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+      </div>
+
+      <div>
+        <label for="mensagem">Mensagem</label>
+        <textarea id="mensagem" name="mensagem" rows="5" placeholder="Como podemos ajudar?" required></textarea>
+      </div>
+
+      <button type="submit" id="btnEnviar">Enviar Mensagem</button>
+      <nav style="color:white;" ; style="margin-top: 30px; text-align: center; padding-bottom: 20px;">
+        <a href="index.php" class="nav-btn-redondo">Início</a>
+      </nav>
+    </form>
+
+    <div id="msg-sucesso" class="msg-sucesso" aria-live="polite">
+      ✅ Mensagem enviada com sucesso! Entraremos em contato em breve.
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+
+  <script>
+    const form = document.getElementById('formContato');
+    const msgDiv = document.getElementById('msg-sucesso');
+    const btn = document.getElementById('btnEnviar');
+
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      const textoOriginal = btn.innerText;
+      btn.innerText = "Enviando...";
+      btn.disabled = true;
+
+      setTimeout(function () {
+        msgDiv.style.display = 'block';
+        form.reset();
+        btn.innerText = textoOriginal;
+        btn.disabled = false;
+
+        setTimeout(() => {
+          msgDiv.style.display = 'none';
+        }, 5000);
+
+      }, 2000);
+    });
+  </script>
+</body>
+
+</html>
