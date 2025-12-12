@@ -147,7 +147,7 @@ if ($grupo_selecionado) {
 
             <br><br>
             <button type="submit" class="btn-submit">Ver Exercícios</button>
-            <a href="index.php?tema=<?php echo $tema_atual; ?>&fonte=<?php echo $tamanho_fonte; ?>" class="btn-nav" style="background:#ffcc00; color:black; text-decoration:none;">Voltar ao Menu Principal</a>
+            <a href="index.html?tema=<?php echo $tema_atual; ?>&fonte=<?php echo $tamanho_fonte; ?>" class="btn-nav" style="background:#ffcc00; color:black; text-decoration:none;">Voltar ao Menu Principal</a>
 
         </form>
     </div>
@@ -223,4 +223,5 @@ if ($grupo_selecionado) {
   </script>
 
 </body>
-</html> 
+<script src="theme-toggle.js"></script>
+</html>
