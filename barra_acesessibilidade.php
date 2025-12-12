@@ -215,9 +215,11 @@ if ($video_escolhido && isset($videosData[$video_escolhido])) {
     <nav style="color:white;"; style="margin-top: 30px; text-align: center; padding-bottom: 20px;">
         <a href="treino.php" class="nav-btn-redondo">Treinos</a>
         <a href="anabolizante.php" class="nav-btn-redondo">Anabolizantes</a>
-        <a href="suplementos.php" class="nav-btn-redondo">Suplementos</a>
-        <a href="contato.html" class="nav-btn-redondo">Contato</a>
-        <a href="pagina_principal.php" class="nav-btn-redondo">Início</a>
+        <a href="suplementos.html" class="nav-btn-redondo">Suplementos</a>
+        <a href="contato1.html" class="nav-btn-redondo">Contato</a>
+        <a href="login.php" class="nav-btn-redondo">Login</a>
+        <a href="perfil.php" class="nav-btn-redondo">Meu Perfil</a>
+        <a href="index.html" class="nav-btn-redondo">Início</a>
 
     </nav>
   </div>
@@ -240,5 +242,6 @@ if ($video_escolhido && isset($videosData[$video_escolhido])) {
     function pararTexto() { synthesis.cancel(); resetarBotoes(); }
     function resetarBotoes() { document.getElementById('btnOuvir').style.display = 'inline-block'; document.getElementById('btnParar').style.display = 'none'; }
 </script>
+<script src="theme-toggle.js"></script>
 </body>
 </html>
