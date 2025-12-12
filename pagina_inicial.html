@@ -1,15 +1,17 @@
 <!DOCTYPE html>
-
-<html class="dark" lang="pt-br"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Página Principal da Academia</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
-<style>
+<html class="dark" lang="pt-br">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Página Principal da Academia</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+    
+    
+    <style>
         .material-symbols-outlined {
             font-variation-settings:
             'FILL' 0,
@@ -17,243 +19,229 @@
             'GRAD' 0,
             'opsz' 24
         }
+        .high-contrast {
+            filter: invert(1) contrast(1.2);
+        }
+        .high-contrast img,
+        .high-contrast video {
+            filter: invert(1);
+        }
     </style>
-<script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            colors: {
-              "primary": "#ec1313",
-              "background-light": "#f8f6f6",
-              "background-dark": "#181111", /* Modified from #221010 to match component bg */
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec1313",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#181111",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
             },
-            fontFamily: {
-              "display": ["Lexend", "sans-serif"]
-            },
-            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
-          },
-        },
-      }
+        }
     </script>
 </head>
 <body class="font-display">
-<div class="relative flex min-h-screen w-full flex-col bg-background-light dark:bg-background-dark group/design-root overflow-x-hidden">
-<div class="layout-container flex h-full grow flex-col">
-<div class="px-4 md:px-10 lg:px-20 xl:px-40 flex flex-1 justify-center py-5">
-<div class="layout-content-container flex flex-col w-full max-w-[960px] flex-1">
-<!-- TopNavBar -->
-<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-white/10 dark:border-b-[#392828] px-4 md:px-10 py-3">
-<div class="flex items-center gap-4 text-black dark:text-white">
-<div class="size-6 text-primary">
-</div>
-<h2 class="text-black dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">Academia</h2>
-</div>
-<nav class="hidden md:flex flex-1 justify-end gap-8">
-<div class="flex items-center gap-9">
+    <div class="relative flex min-h-screen w-full flex-col bg-background-light dark:bg-background-dark group/design-root overflow-x-hidden">
+        <div class="layout-container flex h-full grow flex-col">
+            <div class="px-4 md:px-10 lg:px-20 xl:px-40 flex flex-1 justify-center py-5">
+                <div class="layout-content-container flex flex-col w-full max-w-[960px] flex-1">
+                    
+                    <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-white/10 dark:border-b-[#392828] px-4 md:px-10 py-3">
+                        <div class="flex items-center gap-4 text-black dark:text-white">
+                            <div class="size-6 text-primary"></div>
+                            <h2 class="text-black dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">Academia</h2>
+                        </div>
+                        
+                        <nav class="hidden md:flex flex-1 justify-end items-center gap-6">
+                            <div id="accessibility-controls" class="flex items-center gap-2">
+                                <button id="increase-font" class="cursor-pointer items-center justify-center leading-normal rounded-lg text-black dark:text-white text-sm font-bold border rounded-sm p-1 px-2 hover:bg-red-500">Aumentar</button>
+                                <button id="decrease-font" class="cursor-pointer items-center justify-center leading-normal rounded-lg text-black dark:text-white text-sm font-bold border rounded-sm p-1 px-2 hover:bg-red-500">Diminuir</button>
+                                <button id="reset-font" class="cursor-pointer items-center justify-center leading-normal rounded-lg text-black dark:text-white text-sm font-bold border rounded-sm p-1 px-2 hover:bg-red-500">Padrão</button>
+                                <button id="toggle-contrast" class="cursor-pointer items-center justify-center leading-normal rounded-lg text-black dark:text-white text-sm font-bold border rounded-sm p-1 px-2 hover:bg-red-500">Contraste</button>
+                                <button id="tts-toggle" class="cursor-pointer items-center justify-center leading-normal rounded-lg text-black dark:text-white text-sm font-bold border rounded-sm p-1 px-2 hover:bg-red-500">Ouvir</button>
+                            </div>
 
-<div id="accessibility-controls" class="flex items-center gap-4">
-
-    <button id="increase-font" class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden justify-center leading-normal rounded-lg  text-black dark:text-white text-sm font-bold border rounded-sm p-1 pr-3 pl-3 hover:bg-red-500"  >Aumentar</button>
-    <button id="decrease-font" class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden justify-center leading-normal  rounded-lg  text-black dark:text-white text-sm font-bold border rounded-sm p-1 pr-3 pl-3 hover:bg-red-500">Diminuir</button>
-    <button id="reset-font" class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden justify-center leading-normal rounded-lg  text-black dark:text-white text-sm font-bold border rounded-sm p-1 pr-3 pl-3 hover:bg-red-500 ">Padrão</button>
-
-    <button id="toggle-contrast" class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden leading-normal justify-center rounded-lg  text-black dark:text-white text-sm font-bold border rounded-sm p-1 pr-3 pl-3 hover:bg-red-500 ">
-        Contraste
-    </button>
-
-    <button id="tts-toggle" class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden leading-normal justify-center  rounded-lg  text-black dark:text-white text-sm font-bold border rounded-sm p-1 pr-3 pl-3  hover:bg-red-500">
-        Ouvir
-    </button>
-
-</div>
-
-</div>
-<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em]">
-<span class="truncate">Agende sua Aula</span>
+                      <button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-transparent border border-primary text-primary hover:bg-primary hover:text-white transition-colors text-sm font-bold leading-normal tracking-[0.015em]">
+    <span class="truncate">Agende sua Aula</span>
 </button>
-</nav>
-<button class="md:hidden text-black dark:text-white">
-<span class="material-symbols-outlined text-3xl">menu</span>
-</button>
-</header>
-<!-- HeroSection -->
-<div class="@container mt-8">
-<div class="@[480px]:p-4">
-<div class="flex min-h-[480px] flex-col gap-6 bg-cover bg-center bg-no-repeat @[480px]:gap-8 @[480px]:rounded-xl items-center justify-center p-4" data-alt="Pessoas se exercitando em uma academia moderna e bem iluminada." style='background-image: linear-gradient(rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.6) 100%);'>
- <video class="w-full h-96 rounded-xl" controls>
-          <source src="./videos/treino1.mp4" type="video/mp4">
-        </video>
-<div class="flex flex-col gap-2 text-center max-w-2xl">
-<h1 class="text-white text-4xl font-black leading-tight tracking-[-0.033em] @[480px]:text-5xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em]">Transforme seu corpo, mude sua vida.</h1>
-<h2 class="text-white/90 text-sm font-normal leading-normal @[480px]:text-base @[480px]:font-normal @[480px]:leading-normal">Equipamentos de ponta, aulas dinâmicas e o acompanhamento que você precisa para atingir seus objetivos.</h2>
-</div>
-<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 @[480px]:h-12 @[480px]:px-5 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em]">
-<span class="truncate">Teste Grátis por 7 Dias</span>
-</button>
-</div>
-</div>
-</div>
-<!-- FeatureSection -->
-<div class="flex flex-col gap-10 px-4 py-16 @container">
-<div class="flex flex-col gap-4 text-center items-center">
-<h2 class="text-black dark:text-white tracking-light text-3xl font-bold leading-tight @[480px]:text-4xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em] max-w-[720px]">O melhor para o seu treino</h2>
-<p class="text-black/70 dark:text-white/70 text-base font-normal leading-normal max-w-[720px]">Oferecemos uma estrutura completa e um ambiente motivador para você alcançar seus melhores resultados.</p>
-</div>
-<div class="grid grid-cols-[repeat(auto-fit,minmax(240px,1fr))] gap-4 p-0">
-<div class="flex flex-1 gap-4 rounded-xl border border-black/10 dark:border-[#543b3b] bg-white dark:bg-[#271c1c] p-6 flex-col items-center text-center">
-<span class="material-symbols-outlined text-primary text-4xl mb-2">fitness_center</span>
-<div class="flex flex-col gap-1">
-<h3 class="text-black dark:text-white text-base font-bold leading-tight">Equipamentos Modernos</h3>
-<p class="text-black/60 dark:text-[#b99d9d] text-sm font-normal leading-normal">Aparelhos de última geração para garantir sua performance e segurança.</p>
-</div>
-</div>
-<div class="flex flex-1 gap-4 rounded-xl border border-black/10 dark:border-[#543b3b] bg-white dark:bg-[#271c1c] p-6 flex-col items-center text-center">
-<span class="material-symbols-outlined text-primary text-4xl mb-2">groups</span>
-<div class="flex flex-col gap-1">
-<h3 class="text-black dark:text-white text-base font-bold leading-tight">Aulas em Grupo</h3>
-<p class="text-black/60 dark:text-[#b99d9d] text-sm font-normal leading-normal">Aulas de HIIT, Yoga, Spinning e muito mais para diversificar seu treino.</p>
-</div>
-</div>
-<div class="flex flex-1 gap-4 rounded-xl border border-black/10 dark:border-[#543b3b] bg-white dark:bg-[#271c1c] p-6 flex-col items-center text-center">
-<span class="material-symbols-outlined text-primary text-4xl mb-2">clinical_notes</span>
-<div class="flex flex-col gap-1">
-<h3 class="text-black dark:text-white text-base font-bold leading-tight">Acompanhamento Profissional</h3>
-<p class="text-black/60 dark:text-[#b99d9d] text-sm font-normal leading-normal">Nossos instrutores estão prontos para criar um plano exclusivo para você.</p>
-</div>
-</div>
-</div>
-</div>
 
-<div class="flex flex-col gap-8 px-4 py-16 @container">
-<div class="flex flex-col gap-4 text-center items-center">
-<h2 class="text-black dark:text-white tracking-light text-3xl font-bold leading-tight @[480px]:text-4xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em] max-w-[720px]">Nossas Aulas</h2>
-<p class="text-black/70 dark:text-white/70 text-base font-normal leading-normal max-w-[720px]">Encontre a aula perfeita para seus objetivos e comece a se movimentar hoje mesmo.</p>
-</div>
-<div class="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-6 p-0">
-<div class="flex flex-col rounded-xl overflow-hidden border border-black/10 dark:border-[#543b3b] bg-white dark:bg-[#271c1c]">
-<img class="h-48 w-full object-cover" data-alt="Homem levantando peso em uma aula de musculação." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCy5xVhVDWUvalWFeD98tJGYJFdzdH-bBLUO61omVbHY1ZMuxONj55MIPIA2Qisyv0p1gVKVrO9AkatudTdLTmgDa855A_wZcZiiAat1r6mq5rkVXwvaTqKPAzu9dVqX6764ZfiyfsI9QAWDqt5acwP_0ZV7A802e_2JGDqpFWPK32ZgU7K7HREv28sNUw34FFl7SiMZp6qp2BC0SjdJNPMb7pkv-yV3LwMefpWrvuloROQrfF6ctrBi1PEWvTme5IvS_7X6f4BuDY"/>
-<div class="p-6 flex flex-col gap-2">
-<h3 class="text-black dark:text-white text-lg font-bold">Musculação</h3>
-<p class="text-black/60 dark:text-[#b99d9d] text-sm">Fortaleça seus músculos, aumente sua resistência e defina seu corpo com treinos personalizados.</p>
-</div>
-</div>
-<div class="flex flex-col rounded-xl overflow-hidden border border-black/10 dark:border-[#543b3b] bg-white dark:bg-[#271c1c]">
-<img class="h-48 w-full object-cover" data-alt="Grupo de pessoas em uma aula de HIIT de alta intensidade." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDf3zQEtn3fb41oe_fTqBoLVHJxko-Uwvz4iegy9V3dFR2sd1HK2YfTjM0uCd7gM1qqoJ0UXYGMRNikn4ZpUAoAREVQqehRB7CXDwtpv8UtrHLlE4RuIoJrBRRIeF8mmSo-477I77yiohqu1kUIzWpljiiId9q36PrtbJP8v_LwB2NL4lmJ8YzAvZjeG-5GUaKmKRiuZNKp-pZA380lfghqmF7-Kb1eBm2tSFIK86MQktZz1Ko8_HO2Ro7QJ4btKoouRNEPs27RHJA"/>
-<div class="p-6 flex flex-col gap-2">
-<h3 class="text-black dark:text-white text-lg font-bold">HIIT</h3>
-<p class="text-black/60 dark:text-[#b99d9d] text-sm">Queime o máximo de calorias em tempo recorde com nossos treinos intervalados de alta intensidade.</p>
-</div>
-</div>
-<div class="flex flex-col rounded-xl overflow-hidden border border-black/10 dark:border-[#543b3b] bg-white dark:bg-[#271c1c]">
-<img class="h-48 w-full object-cover" data-alt="Mulher praticando yoga em um ambiente tranquilo." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLA5LLnqfXQFV3UkL5aqiIksArVBGkGnBPClyP1kdcIedZzELiImcZ_XOSIYoAlcWjByLrZLhgn5KulyPQ2b1VuRCHsKAzDaiZmVmt9c8TGq307pT-tigDJMcn0v2lZoqystBurDE81PW8rkPJNQUl23ZIwcCe56BoiAJLcUcPDUocdPzkErxmwxoCZXA4QDRmiCEkxR6T8syDaM9vK9kyOxpJ45T4o1pyEj-tkNw0iUyql8MJb4mVsuGHbXpbd0_zA4aubb06GTw"/>
-<div class="p-6 flex flex-col gap-2">
-<h3 class="text-black dark:text-white text-lg font-bold">Yoga</h3>
-<p class="text-black/60 dark:text-[#b99d9d] text-sm">Aumente sua flexibilidade, força e equilíbrio enquanto acalma a mente e reduz o estresse.</p>
-</div>
-</div>
-</div>
-</div>
-<!-- CTA Block -->
-<div class="@container my-16">
-<div class="@[480px]:p-4">
-<div class="flex flex-col gap-6 bg-primary @[480px]:rounded-xl items-center justify-center p-8 md:p-12 text-center">
-<div class="flex flex-col gap-2">
-<h2 class="text-white text-3xl font-black leading-tight tracking-[-0.033em]">Pronto para Começar?</h2>
-<p class="text-white/90 text-base font-normal leading-normal">Junte-se a nós e dê o primeiro passo em direção à sua melhor versão. Agende uma aula experimental gratuita!</p>
-</div>
-<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 bg-white text-primary text-base font-bold leading-normal tracking-[0.015em]">
-<span class="truncate">Comece Agora</span>
-</button>
-</div>
-</div>
-</div>
-<!-- Footer -->
-<footer class="border-t border-solid border-white/10 dark:border-b-[#392828] px-4 md:px-10 py-8">
-<div class="flex flex-col md:flex-row justify-between items-center gap-8">
-<div class="flex items-center gap-4 text-black dark:text-white">
-<div class="size-5 text-primary">
-<path clip-rule="evenodd" d="M24 4H42V17.3333V30.6667H24V44H6V30.6667V17.3333H24V4Z" fill="currentColor" fill-rule="evenodd"></path></svg>
-</div>
-<h2 class="text-black dark:text-white text-base font-bold">Academia</h2>
-</div>
-<div class="flex items-center gap-6 text-sm text-black/80 dark:text-white/80">
-<a class="hover:text-primary" href="#">Termos</a>
-<a class="hover:text-primary" href="#">Privacidade</a>
-<a class="hover:text-primary" href="#">Contato</a>
-</div>
-<div class="text-sm text-black/60 dark:text-white/60">© 2025 Academia. Todos os direitos reservados.</div>
-</div>
-</footer>
-</div>
-</div>
-</div>
-</div>
+<a href="login.html" class="bg-primary hover:bg-red-700 text-white font-bold text-lg py-2 px-8 rounded-2xl shadow-md transition-colors inline-block text-center">
+    Login
+</a>
+                            </nav>
+                        
+                        <button class="md:hidden text-black dark:text-white">
+                            <span class="material-symbols-outlined text-3xl">menu</span>
+                        </button>
+                    </header>
+
+                    <div class="@container mt-8">
+                        <div class="@[480px]:p-4">
+                            <div class="flex min-h-[480px] flex-col gap-6 bg-cover bg-center bg-no-repeat @[480px]:gap-8 @[480px]:rounded-xl items-center justify-center p-4" data-alt="Pessoas se exercitando em uma academia moderna e bem iluminada." style='background-image: linear-gradient(rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.6) 100%);'>
+                                <video class="w-full h-96 rounded-xl" controls>
+                                    <source src="./videos/treino1.mp4" type="video/mp4">
+                                </video>
+                                <div class="flex flex-col gap-2 text-center max-w-2xl">
+                                    <h1 class="text-white text-4xl font-black leading-tight tracking-[-0.033em] @[480px]:text-5xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em]">Transforme seu corpo, mude sua vida.</h1>
+                                    <h2 class="text-white/90 text-sm font-normal leading-normal @[480px]:text-base @[480px]:font-normal @[480px]:leading-normal">Equipamentos de ponta, aulas dinâmicas e o acompanhamento que você precisa para atingir seus objetivos.</h2>
+                                </div>
+                                <button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 @[480px]:h-12 @[480px]:px-5 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em]">
+                                    <span class="truncate">Teste Grátis por 7 Dias</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col gap-10 px-4 py-16 @container">
+                        <div class="flex flex-col gap-4 text-center items-center">
+                            <h2 class="text-black dark:text-white tracking-light text-3xl font-bold leading-tight @[480px]:text-4xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em] max-w-[720px]">O melhor para o seu treino</h2>
+                            <p class="text-black/70 dark:text-white/70 text-base font-normal leading-normal max-w-[720px]">Oferecemos uma estrutura completa e um ambiente motivador para você alcançar seus melhores resultados.</p>
+                        </div>
+                        <div class="grid grid-cols-[repeat(auto-fit,minmax(240px,1fr))] gap-4 p-0">
+                            <div class="flex flex-1 gap-4 rounded-xl border border-black/10 dark:border-[#543b3b] bg-white dark:bg-[#271c1c] p-6 flex-col items-center text-center">
+                                <span class="material-symbols-outlined text-primary text-4xl mb-2">fitness_center</span>
+                                <div class="flex flex-col gap-1">
+                                    <h3 class="text-black dark:text-white text-base font-bold leading-tight">Equipamentos Modernos</h3>
+                                    <p class="text-black/60 dark:text-[#b99d9d] text-sm font-normal leading-normal">Aparelhos de última geração para garantir sua performance e segurança.</p>
+                                </div>
+                            </div>
+                            <div class="flex flex-1 gap-4 rounded-xl border border-black/10 dark:border-[#543b3b] bg-white dark:bg-[#271c1c] p-6 flex-col items-center text-center">
+                                <span class="material-symbols-outlined text-primary text-4xl mb-2">groups</span>
+                                <div class="flex flex-col gap-1">
+                                    <h3 class="text-black dark:text-white text-base font-bold leading-tight">Aulas em Grupo</h3>
+                                    <p class="text-black/60 dark:text-[#b99d9d] text-sm font-normal leading-normal">Aulas de HIIT, Yoga, Spinning e muito mais para diversificar seu treino.</p>
+                                </div>
+                            </div>
+                            <div class="flex flex-1 gap-4 rounded-xl border border-black/10 dark:border-[#543b3b] bg-white dark:bg-[#271c1c] p-6 flex-col items-center text-center">
+                                <span class="material-symbols-outlined text-primary text-4xl mb-2">clinical_notes</span>
+                                <div class="flex flex-col gap-1">
+                                    <h3 class="text-black dark:text-white text-base font-bold leading-tight">Acompanhamento Profissional</h3>
+                                    <p class="text-black/60 dark:text-[#b99d9d] text-sm font-normal leading-normal">Nossos instrutores estão prontos para criar um plano exclusivo para você.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col gap-8 px-4 py-16 @container">
+                        <div class="flex flex-col gap-4 text-center items-center">
+                            <h2 class="text-black dark:text-white tracking-light text-3xl font-bold leading-tight @[480px]:text-4xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em] max-w-[720px]">Nossas Aulas</h2>
+                            <p class="text-black/70 dark:text-white/70 text-base font-normal leading-normal max-w-[720px]">Encontre a aula perfeita para seus objetivos e comece a se movimentar hoje mesmo.</p>
+                        </div>
+                        <div class="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-6 p-0">
+                            <div class="flex flex-col rounded-xl overflow-hidden border border-black/10 dark:border-[#543b3b] bg-white dark:bg-[#271c1c]">
+                                <img class="h-48 w-full object-cover" data-alt="Homem levantando peso em uma aula de musculação." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCy5xVhVDWUvalWFeD98tJGYJFdzdH-bBLUO61omVbHY1ZMuxONj55MIPIA2Qisyv0p1gVKVrO9AkatudTdLTmgDa855A_wZcZiiAat1r6mq5rkVXwvaTqKPAzu9dVqX6764ZfiyfsI9QAWDqt5acwP_0ZV7A802e_2JGDqpFWPK32ZgU7K7HREv28sNUw34FFl7SiMZp6qp2BC0SjdJNPMb7pkv-yV3LwMefpWrvuloROQrfF6ctrBi1PEWvTme5IvS_7X6f4BuDY"/>
+                                <div class="p-6 flex flex-col gap-2">
+                                    <h3 class="text-black dark:text-white text-lg font-bold">Musculação</h3>
+                                    <p class="text-black/60 dark:text-[#b99d9d] text-sm">Fortaleça seus músculos, aumente sua resistência e defina seu corpo com treinos personalizados.</p>
+                                </div>
+                            </div>
+                            <div class="flex flex-col rounded-xl overflow-hidden border border-black/10 dark:border-[#543b3b] bg-white dark:bg-[#271c1c]">
+                                <img class="h-48 w-full object-cover" data-alt="Grupo de pessoas em uma aula de HIIT de alta intensidade." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDf3zQEtn3fb41oe_fTqBoLVHJxko-Uwvz4iegy9V3dFR2sd1HK2YfTjM0uCd7gM1qqoJ0UXYGMRNikn4ZpUAoAREVQqehRB7CXDwtpv8UtrHLlE4RuIoJrBRRIeF8mmSo-477I77yiohqu1kUIzWpljiiId9q36PrtbJP8v_LwB2NL4lmJ8YzAvZjeG-5GUaKmKRiuZNKp-pZA380lfghqmF7-Kb1eBm2tSFIK86MQktZz1Ko8_HO2Ro7QJ4btKoouRNEPs27RHJA"/>
+                                <div class="p-6 flex flex-col gap-2">
+                                    <h3 class="text-black dark:text-white text-lg font-bold">HIIT</h3>
+                                    <p class="text-black/60 dark:text-[#b99d9d] text-sm">Queime o máximo de calorias em tempo recorde com nossos treinos intervalados de alta intensidade.</p>
+                                </div>
+                            </div>
+                            <div class="flex flex-col rounded-xl overflow-hidden border border-black/10 dark:border-[#543b3b] bg-white dark:bg-[#271c1c]">
+                                <img class="h-48 w-full object-cover" data-alt="Mulher praticando yoga em um ambiente tranquilo." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLA5LLnqfXQFV3UkL5aqiIksArVBGkGnBPClyP1kdcIedZzELiImcZ_XOSIYoAlcWjByLrZLhgn5KulyPQ2b1VuRCHsKAzDaiZmVmt9c8TGq307pT-tigDJMcn0v2lZoqystBurDE81PW8rkPJNQUl23ZIwcCe56BoiAJLcUcPDUocdPzkErxmwxoCZXA4QDRmiCEkxR6T8syDaM9vK9kyOxpJ45T4o1pyEj-tkNw0iUyql8MJb4mVsuGHbXpbd0_zA4aubb06GTw"/>
+                                <div class="p-6 flex flex-col gap-2">
+                                    <h3 class="text-black dark:text-white text-lg font-bold">Yoga</h3>
+                                    <p class="text-black/60 dark:text-[#b99d9d] text-sm">Aumente sua flexibilidade, força e equilíbrio enquanto acalma a mente e reduz o estresse.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="@container my-16">
+                        <div class="@[480px]:p-4">
+                            <div class="flex flex-col gap-6 bg-primary @[480px]:rounded-xl items-center justify-center p-8 md:p-12 text-center">
+                                <div class="flex flex-col gap-2">
+                                    <h2 class="text-white text-3xl font-black leading-tight tracking-[-0.033em]">Pronto para Começar?</h2>
+                                    <p class="text-white/90 text-base font-normal leading-normal">Junte-se a nós e dê o primeiro passo em direção à sua melhor versão. Agende uma aula experimental gratuita!</p>
+                                </div>
+                                <button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 bg-white text-primary text-base font-bold leading-normal tracking-[0.015em]">
+                                    <span class="truncate">Comece Agora</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <footer class="border-t border-solid border-white/10 dark:border-b-[#392828] px-4 md:px-10 py-8">
+                        <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+                            <div class="flex items-center gap-4 text-black dark:text-white">
+                                <div class="size-5 text-primary">
+                                    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path clip-rule="evenodd" d="M24 4H42V17.3333V30.6667H24V44H6V30.6667V17.3333H24V4Z" fill="currentColor" fill-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                                <h2 class="text-black dark:text-white text-base font-bold">Academia</h2>
+                            </div>
+                            <div class="flex items-center gap-6 text-sm text-black/80 dark:text-white/80">
+                                <a class="hover:text-primary" href="#">Termos</a>
+                                <a class="hover:text-primary" href="#">Privacidade</a>
+                                <a class="hover:text-primary" href="#">Contato</a>
+                            </div>
+                            <div class="text-sm text-black/60 dark:text-white/60">© 2025 Academia. Todos os direitos reservados.</div>
+                        </div>
+                    </footer>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let fontSize = 100;
+
+        function updateFont() {
+            document.documentElement.style.fontSize = fontSize + "%";
+        }
+
+        document.getElementById("increase-font").onclick = () => {
+            fontSize += 10;
+            updateFont();
+        };
+
+        document.getElementById("decrease-font").onclick = () => {
+            if (fontSize > 50) {
+                fontSize -= 10;
+                updateFont();
+            }
+        };
+
+        document.getElementById("reset-font").onclick = () => {
+            fontSize = 100;
+            updateFont();
+        };
+
+        document.getElementById("toggle-contrast").onclick = () => {
+            document.body.classList.toggle("high-contrast");
+        };
+
+        let ttsActive = false;
+        let utterance = new SpeechSynthesisUtterance();
+
+        document.getElementById("tts-toggle").onclick = () => {
+            if (!ttsActive) {
+                utterance.text = document.body.innerText;
+                speechSynthesis.speak(utterance);
+                ttsActive = true;
+                document.getElementById("tts-toggle").innerText = "Parar";
+            } else {
+                speechSynthesis.cancel();
+                ttsActive = false;
+                document.getElementById("tts-toggle").innerText = "Ouvir";
+            }
+        };
+    </script>
+
+
+
+
 </body>
-
-
-
-<script>
-
-let fontSize = 100;
-
-function updateFont() {
-    document.documentElement.style.fontSize = fontSize + "%";
-}
-
-document.getElementById("increase-font").onclick = () => {
-    fontSize += 10;
-    updateFont();
-};
-
-document.getElementById("decrease-font").onclick = () => {
-    if (fontSize > 50) {
-        fontSize -= 10;
-        updateFont();
-    }
-};
-
-document.getElementById("reset-font").onclick = () => {
-    fontSize = 100;
-    updateFont();
-};
-
-
-document.getElementById("toggle-contrast").onclick = () => {
-    document.body.classList.toggle("high-contrast");
-};
-</script>
-
-<style>
-
-.high-contrast {
-    filter: invert(1) contrast(1.2);
-}
-.high-contrast img,
-.high-contrast video {
-    filter: invert(1);
-}
-</style>
-
-<script>
-let ttsActive = false;
-let utterance = new SpeechSynthesisUtterance();
-
-document.getElementById("tts-toggle").onclick = () => {
-
-    if (!ttsActive) {
-        utterance.text = document.body.innerText;
-        speechSynthesis.speak(utterance);
-        ttsActive = true;
-        document.getElementById("tts-toggle").innerText = "Parar";
-    } else {
-        speechSynthesis.cancel();
-        ttsActive = false;
-        document.getElementById("tts-toggle").innerText = "Ouvir";
-    }
-};
-</script>
-
-
-
 </html>
