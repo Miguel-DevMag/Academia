@@ -1,184 +1,222 @@
-<?php
-// --- LÓGICA PHP (BACK-END) ---
-
-// 1. Definição dos dados
-$infoData = [
-    'deca' => [
-        'nome' => "Deca-Durabolin",
-        'risco' => "Alta retenção líquida, acne severa e risco cardíaco."
-    ],
-    'dura' => [
-        'nome' => "Durateston",
-        'risco' => "Alterações hormonais agressivas, calvície e agressividade."
-    ]
-];
-
-// Captura a escolha do usuário
-$selecionado = isset($_GET['anabolizantes']) ? $_GET['anabolizantes'] : '';
-
-// 2. Configurações de Acessibilidade
-$tema_atual = isset($_GET['tema']) ? $_GET['tema'] : 'padrao';
-$tamanho_fonte = isset($_GET['fonte']) ? $_GET['fonte'] : 'medio';
-$grupo_selecionado = isset($_GET['grupo']) ? $_GET['grupo'] : '';
-
-function criarLink($params) {
-    global $tema_atual, $tamanho_fonte, $grupo_selecionado, $selecionado;
-    $novos = array_merge([
-        'tema' => $tema_atual,
-        'fonte' => $tamanho_fonte,
-        'grupo' => $grupo_selecionado,
-        'anabolizantes' => $selecionado // Mantém a seleção atual ao mudar acessibilidade
-    ], $params);
-    return "?" . http_build_query($novos);
-}
-
-// 3. Preparação do Texto para Áudio (PHP gera, JS lê)
-$texto_audio = "Alerta sobre Anabolizantes. Informação é a melhor prevenção. Selecione um item abaixo para saber os riscos.";
-
-if ($selecionado && isset($infoData[$selecionado])) {
-    $dados = $infoData[$selecionado];
-    $texto_audio = "Você selecionou " . $dados['nome'] . ". Riscos principais: " . $dados['risco'];
-}
-?>
-
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html class="dark" lang="pt-br">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Alerta: Anabolizantes</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Alerta: Anabolizantes</title>
 
-  <style>
-    /* CSS ACESSIBILIDADE (Igual ao guia de treinos) */
-    body { font-family: sans-serif; margin: 0; }
-    
-    body.fonte-pequeno { font-size: 14px; }
-    body.fonte-medio   { font-size: 18px; }
-    body.fonte-grande  { font-size: 24px; }
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 
-    /* Tema Alto Contraste */
-    body.tema-alto-contraste { background-color: black !important; color: yellow !important; }
-    body.tema-alto-contraste .titulo-vermelho { color: #FF4500 !important; }
-    body.tema-alto-contraste select, body.tema-alto-contraste button { 
-        background-color: #333; color: yellow; border: 1px solid yellow; 
-    }
-    body.tema-alto-contraste a { color: #00FF00 !important; }
-    body.tema-alto-contraste .info-box { border: 2px solid yellow; background: #222; }
-    
-    /* Botões da Barra */
-    #barra-acessibilidade { padding: 15px; background: #eee; text-align: center; border-bottom: 2px solid #ccc; margin-bottom: 20px;}
-    body.tema-alto-contraste #barra-acessibilidade { background: #000; border-bottom: 1px solid yellow; }
-    
-    .btn-acess {
-        text-decoration: none; padding: 8px 12px; background: #007bff; color: white; 
-        border-radius: 4px; margin: 0 5px; display: inline-block; font-weight: bold;
-        cursor: pointer; border: none; font-size: 1rem; font-family: inherit;
-    }
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 
-    /* Estilos Específicos */
-    .titulo-vermelho { color: #dc3545; }
-    main { max-width: 800px; margin: 0 auto; padding: 15px; text-align: center; }
-    
-    .info-box {
-        margin-top: 20px; padding: 20px; background: #f8d7da; border-radius: 8px; border: 1px solid #f5c6cb; color: #721c24;
-    }
-    body.tema-alto-contraste .info-box { color: yellow; }
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings:
+                'FILL' 0,
+                'wght' 400,
+                'GRAD' 0,
+                'opsz' 24
+        }
+    </style>
 
-    select { padding: 10px; font-size: 1rem; margin-top: 10px; width: 100%; max-width: 400px; }
-  </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#ec1313",
+                        "background-light": "#ffffff",
+                        "background-dark": "#181111",
+                        "text-light": "#000000",
+                    },
+                    fontFamily: {
+                        display: ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.25rem",
+                        lg: "0.5rem",
+                        xl: "0.75rem",
+                        full: "9999px"
+                    }
+                }
+            }
+        }
+    </script>
 </head>
 
-<body class="pg-interna com-barra fonte-<?php echo $tamanho_fonte; ?> tema-<?php echo $tema_atual; ?>">
+<body class="font-display bg-white text-black dark:bg-background-dark dark:text-white flex flex-col min-h-screen">
 
-<div id="barra-acessibilidade">
-    <a href="<?php echo criarLink(['fonte' => 'grande']); ?>" class="btn-acess">A+</a>
-    <a href="<?php echo criarLink(['fonte' => 'medio']); ?>" class="btn-acess">A</a>
-    <a href="<?php echo criarLink(['fonte' => 'pequeno']); ?>" class="btn-acess">A-</a>
+    <!-- BARRA DE ACESSIBILIDADE -->
+    <div class="bg-gray-100 dark:bg-[#2a1f1f] border-b border-black/10 dark:border-white/10 px-4 py-2 flex items-center justify-center md:justify-end gap-3 overflow-x-auto whitespace-nowrap">
+        <span class="text-xs font-bold opacity-50 uppercase tracking-wider mr-2 hidden sm:inline-block">Acessibilidade:</span>
+        <button id="increase-font" class="px-3 py-1 border border-gray-300 dark:border-gray-600 rounded text-xs font-bold hover:bg-primary hover:text-white transition-colors">Aumentar</button>
+        <button id="decrease-font" class="px-3 py-1 border border-gray-300 dark:border-gray-600 rounded text-xs font-bold hover:bg-primary hover:text-white transition-colors">Diminuir</button>
+        <button id="reset-font" class="px-3 py-1 border border-gray-300 dark:border-gray-600 rounded text-xs font-bold hover:bg-primary hover:text-white transition-colors">Padrão</button>
+        <button id="toggle-contrast" class="px-3 py-1 border border-gray-300 dark:border-gray-600 rounded text-xs font-bold hover:bg-primary hover:text-white transition-colors">Contraste</button>
+        <button id="tts-toggle" class="px-3 py-1 border border-gray-300 dark:border-gray-600 rounded text-xs font-bold hover:bg-primary hover:text-white transition-colors">Ouvir</button>
+    </div>
 
-    <?php if($tema_atual == 'padrao'): ?>
-        <a href="<?php echo criarLink(['tema' => 'alto-contraste']); ?>" class="btn-acess">⚡ Contraste</a>
-    <?php else: ?>
-        <a href="<?php echo criarLink(['tema' => 'padrao']); ?>" class="btn-acess">⚪ Normal</a>
-    <?php endif; ?>
+    <div class="relative flex w-full flex-col bg-background-light dark:bg-background-dark group/design-root overflow-x-hidden grow">
+        <div class="layout-container flex h-full grow flex-col">
+            <div class="px-4 md:px-10 lg:px-20 xl:px-40 flex flex-1 justify-center py-5">
+                <div class="layout-content-container flex flex-col w-full max-w-[960px] flex-1">
 
-    <!-- Botões de Áudio JS -->
-    <button id="btnOuvir" onclick="lerTexto()" class="btn-acess">🔊 Ouvir</button>
-    <button id="btnParar" onclick="pararTexto()" class="btn-acess" style="background:red; display:none;">⏹️ Parar</button>
-</div>
+                    <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-black dark:border-[#392828] px-4 py-4 mb-8">
+                        <div class="flex items-center gap-4">
+                            <a href="index.html" class="text-black dark:text-white hover:text-primary transition-colors">
+                                <span class="material-symbols-outlined">arrow_back</span>
+                            </a>
+                            <h2 class="text-black dark:text-white text-xl font-bold">Informações</h2>
+                        </div>
+                    </header>
 
-<main>
-    <h1 class="titulo-vermelho">⚠️ Alerta sobre Anabolizantes</h1>
-    <p>Informação é a melhor prevenção.</p>
+                    <main class="flex flex-col items-center gap-8">
+                        
+                        <!-- Cabeçalho da Seção -->
+                        <div class="text-center space-y-4 animate-fade-in">
+                            <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary/10 mb-2">
+                                <span class="material-symbols-outlined text-primary text-5xl">warning</span>
+                            </div>
+                            <h1 class="text-3xl font-bold text-primary">Alerta sobre Anabolizantes</h1>
+                            <p class="text-lg text-black/70 dark:text-white/70 max-w-xl mx-auto">
+                                Informação é a melhor prevenção. Selecione uma substância abaixo para entender os riscos associados à saúde.
+                            </p>
+                        </div>
 
-    <form action="" method="GET">
-        <!-- Mantém acessibilidade ao submeter -->
-        <input type="hidden" name="tema" value="<?php echo $tema_atual; ?>">
-        <input type="hidden" name="fonte" value="<?php echo $tamanho_fonte; ?>">
+                        <!-- Área Interativa -->
+                        <div class="w-full max-w-lg p-6 border border-black/10 dark:border-[#392828] rounded-xl bg-white/50 dark:bg-[#271c1c] shadow-sm">
+                            
+                            <label for="substancia" class="block text-sm font-bold text-black dark:text-white mb-2">Selecione para saber os riscos:</label>
+                            
+                            <div class="relative">
+                                <select id="substancia" class="w-full rounded-lg bg-white dark:bg-[#181111] border border-gray-300 dark:border-[#543b3b] text-black dark:text-white focus:ring-primary focus:border-primary p-3 pr-10 appearance-none cursor-pointer shadow-sm transition-all hover:border-primary">
+                                    <option value="">-- Selecione uma opção --</option>
+                                    <option value="deca">Deca-Durabolin</option>
+                                    <option value="dura">Durateston</option>
+                                </select>
+                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-black dark:text-white">
+                                    <span class="material-symbols-outlined">expand_more</span>
+                                </div>
+                            </div>
 
-        <label for="anabolizantes" style="font-weight:bold;">Selecione para saber os riscos:</label>
-        <br>
-        <select id="anabolizantes" name="anabolizantes" onchange="this.form.submit()">
-            <option value="">-- Selecione --</option>
-            <option value="deca" <?php if($selecionado == 'deca') echo 'selected'; ?>>Deca-Durabolin</option>
-            <option value="dura" <?php if($selecionado == 'dura') echo 'selected'; ?>>Durateston</option>
-        </select>
-    </form>
+                            <!-- Card de Resultado (Invisível inicialmente) -->
+                            <div id="result-card" class="hidden mt-6 pt-6 border-t border-black/10 dark:border-white/10">
+                                <div class="flex items-start gap-4">
+                                    <span class="material-symbols-outlined text-primary text-3xl mt-1">info</span>
+                                    <div>
+                                        <h3 id="result-title" class="text-xl font-bold text-black dark:text-white mb-2">Título</h3>
+                                        <p class="text-sm font-bold text-primary uppercase tracking-wider mb-1">Principais Riscos:</p>
+                                        <p id="result-desc" class="text-black/80 dark:text-white/80 leading-relaxed">Descrição do risco.</p>
+                                    </div>
+                                </div>
+                            </div>
 
-    <?php if (array_key_exists($selecionado, $infoData)): ?>
-        <div id="info-anabolizante" class="info-box">
-            <h2 class="titulo-vermelho" ; style="color:#721c24"; style="margin-top:0;"><?php echo $infoData[$selecionado]['nome']; ?></h2>
-            <p style="font-weight:bold;">Riscos:</p>
-            <p><?php echo $infoData[$selecionado]['risco']; ?></p>
+                        </div>
+
+                    </main>
+
+                    <footer class="border-t border-black dark:border-[#392828] px-4 py-8 mt-auto">
+                        <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+                            <h2 class="text-black dark:text-white font-bold">Academia</h2>
+                            <div class="flex items-center gap-6 text-black dark:text-white/80 text-sm">
+                                <a class="hover:text-primary" href="#">Termos</a>
+                                <a class="hover:text-primary" href="#">Privacidade</a>
+                                <a class="hover:text-primary" href="contato.php">Contato</a>
+                            </div>
+                            <div class="text-sm text-black dark:text-white/60">
+                                © 2025 Academia. Todos os direitos reservados.
+                            </div>
+                        </div>
+                    </footer>
+
+                </div>
+            </div>
         </div>
-    <?php endif; ?>
-    
-    <br>
-    <a href="index.html?tema=<?php echo $tema_atual; ?>&fonte=<?php echo $tamanho_fonte; ?>" class="btn-acess" style="background:#555; text-decoration:none;">Voltar ao Menu</a>
-</main>
+    </div>
 
-<!-- SCRIPT JAVASCRIPT PARA ÁUDIO -->
-<script>
-    var textoParaLer = <?php echo json_encode($texto_audio); ?>;
-    var synthesis = window.speechSynthesis;
-    var utterance = null;
-
-    function lerTexto() {
-        if (!textoParaLer) return;
-        synthesis.cancel(); // Para falas anteriores
-
-        utterance = new SpeechSynthesisUtterance(textoParaLer);
-        utterance.lang = 'pt-BR';
-        utterance.rate = 1.0;
-
-        utterance.onstart = function() {
-            document.getElementById('btnOuvir').style.display = 'none';
-            document.getElementById('btnParar').style.display = 'inline-block';
+    <script>
+        // --- DADOS (Substituindo o Array PHP) ---
+        const infoData = {
+            'deca': {
+                nome: "Deca-Durabolin",
+                risco: "Alta retenção líquida, acne severa e risco cardíaco elevado."
+            },
+            'dura': {
+                nome: "Durateston",
+                risco: "Alterações hormonais agressivas, calvície, ginecomastia e agressividade."
+            }
         };
 
-        utterance.onend = function() {
-            resetarBotoes();
+        // --- ELEMENTOS DOM ---
+        const select = document.getElementById('substancia');
+        const resultCard = document.getElementById('result-card');
+        const resultTitle = document.getElementById('result-title');
+        const resultDesc = document.getElementById('result-desc');
+
+        // Variável global para o texto do TTS (começa com o padrão)
+        let ttsTextContent = "Alerta sobre Anabolizantes. Informação é a melhor prevenção. Selecione uma substância para saber os riscos.";
+
+        // --- LÓGICA DE INTERAÇÃO ---
+        select.addEventListener('change', (e) => {
+            const valor = e.target.value;
+            const dados = infoData[valor];
+
+            if (dados) {
+                // Atualiza o card
+                resultTitle.innerText = dados.nome;
+                resultDesc.innerText = dados.risco;
+                
+                // Mostra o card com animação simples
+                resultCard.classList.remove('hidden');
+                resultCard.classList.add('animate-fade-in');
+
+                // Atualiza o texto que será lido pelo botão "Ouvir"
+                ttsTextContent = `Você selecionou ${dados.nome}. Os principais riscos são: ${dados.risco}`;
+            } else {
+                // Esconde se selecionar a opção padrão
+                resultCard.classList.add('hidden');
+                ttsTextContent = "Alerta sobre Anabolizantes. Informação é a melhor prevenção. Selecione uma substância para saber os riscos.";
+            }
+        });
+
+        // --- SCRIPTS DE ACESSIBILIDADE (Padrão do Projeto) ---
+        let fontSize = 100;
+        function updateFont() { document.documentElement.style.fontSize = fontSize + "%"; }
+        
+        document.getElementById("increase-font").onclick = () => { fontSize += 10; updateFont(); };
+        document.getElementById("decrease-font").onclick = () => { if (fontSize > 50) { fontSize -= 10; updateFont(); } };
+        document.getElementById("reset-font").onclick = () => { fontSize = 100; updateFont(); };
+        document.getElementById("toggle-contrast").onclick = () => { document.documentElement.classList.toggle("dark"); };
+        
+        // TTS (Text-to-Speech) Integrado com a seleção
+        let ttsActive = false;
+        let utterance = new SpeechSynthesisUtterance();
+        
+        document.getElementById("tts-toggle").onclick = () => {
+            if (!ttsActive) {
+                // Usa a variável atualizada dinamicamente
+                utterance.text = ttsTextContent;
+                speechSynthesis.speak(utterance);
+                ttsActive = true;
+                document.getElementById("tts-toggle").innerText = "Parar";
+            } else {
+                speechSynthesis.cancel();
+                ttsActive = false;
+                document.getElementById("tts-toggle").innerText = "Ouvir";
+            }
         };
 
-        utterance.onerror = function() {
-            resetarBotoes();
+        // Reseta o botão de ouvir quando a fala termina naturalmente
+        utterance.onend = () => {
+            ttsActive = false;
+            document.getElementById("tts-toggle").innerText = "Ouvir";
         };
-
-        synthesis.speak(utterance);
-    }
-
-    function pararTexto() {
-        synthesis.cancel();
-        resetarBotoes();
-    }
-
-    function resetarBotoes() {
-        document.getElementById('btnOuvir').style.display = 'inline-block';
-        document.getElementById('btnParar').style.display = 'none';
-    }
-</script>
-
+    </script>
+    <script src="theme-toggle.js"></script>
 </body>
 </html>
-<script src="theme-toggle.js"></script>
