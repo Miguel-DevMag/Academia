@@ -135,7 +135,7 @@ if ($selecionado && isset($infoData[$selecionado])) {
     <?php endif; ?>
     
     <br>
-    <a href="index.php?tema=<?php echo $tema_atual; ?>&fonte=<?php echo $tamanho_fonte; ?>" class="btn-acess" style="background:#555; text-decoration:none;">Voltar ao Menu</a>
+    <a href="index.html?tema=<?php echo $tema_atual; ?>&fonte=<?php echo $tamanho_fonte; ?>" class="btn-acess" style="background:#555; text-decoration:none;">Voltar ao Menu</a>
 </main>
 
 <!-- SCRIPT JAVASCRIPT PARA ÁUDIO -->
@@ -181,3 +181,4 @@ if ($selecionado && isset($infoData[$selecionado])) {
 
 </body>
 </html>
+<script src="theme-toggle.js"></script>
