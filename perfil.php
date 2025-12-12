@@ -54,8 +54,44 @@ $user = getLoggedUser();
             <span><?php echo $user['id']; ?></span>
         </div>
         
+        <div style="margin-top: 40px; padding-top: 30px; border-top: 2px solid #ddd;">
+            <h2 style="color: #333; margin-bottom: 20px;">🎛️ Gerenciar Conteúdo</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-bottom: 30px;">
+                <a href="admin_videos.php" style="display: block; padding: 20px; background: #e3f2fd; border-radius: 8px; text-decoration: none; border-left: 4px solid #2196f3; transition: 0.3s;">
+                    <strong style="color: #1976d2; font-size: 16px;">📹 Gerenciar Vídeos</strong>
+                    <p style="color: #666; margin: 8px 0 0 0; font-size: 14px;">Adicionar, editar ou deletar vídeos</p>
+                </a>
+                
+                <a href="admin_treinos.php" style="display: block; padding: 20px; background: #f3e5f5; border-radius: 8px; text-decoration: none; border-left: 4px solid #9c27b0; transition: 0.3s;">
+                    <strong style="color: #7b1fa2; font-size: 16px;">💪 Gerenciar Treinos</strong>
+                    <p style="color: #666; margin: 8px 0 0 0; font-size: 14px;">Cadastrar programas de treino</p>
+                </a>
+                
+                <a href="admin_suplementos.php" style="display: block; padding: 20px; background: #fce4ec; border-radius: 8px; text-decoration: none; border-left: 4px solid #e91e63; transition: 0.3s;">
+                    <strong style="color: #c2185b; font-size: 16px;">💊 Gerenciar Suplementos</strong>
+                    <p style="color: #666; margin: 8px 0 0 0; font-size: 14px;">Adicionar produtos e preços</p>
+                </a>
+                
+                <a href="admin_anabolizantes.php" style="display: block; padding: 20px; background: #ffebee; border-radius: 8px; text-decoration: none; border-left: 4px solid #f44336; transition: 0.3s;">
+                    <strong style="color: #d32f2f; font-size: 16px;">⚠️ Gerenciar Anabolizantes</strong>
+                    <p style="color: #666; margin: 8px 0 0 0; font-size: 14px;">Informações e alertas de saúde</p>
+                </a>
+                
+                <a href="admin_depoimentos.php" style="display: block; padding: 20px; background: #fff3e0; border-radius: 8px; text-decoration: none; border-left: 4px solid #ff9800; transition: 0.3s;">
+                    <strong style="color: #e65100; font-size: 16px;">⭐ Gerenciar Depoimentos</strong>
+                    <p style="color: #666; margin: 8px 0 0 0; font-size: 14px;">Adicionar histórias de sucesso</p>
+                </a>
+                
+                <a href="admin_contatos.php" style="display: block; padding: 20px; background: #e8f5e9; border-radius: 8px; text-decoration: none; border-left: 4px solid #4caf50; transition: 0.3s;">
+                    <strong style="color: #2e7d32; font-size: 16px;">📧 Ver Mensagens</strong>
+                    <p style="color: #666; margin: 8px 0 0 0; font-size: 14px;">Mensagens de contato dos usuários</p>
+                </a>
+            </div>
+        </div>
+        
         <div class="button-group">
-            <a href="index.html" class="btn-back">← Voltar</a>
+            <a href="index.html" class="btn-back">← Home</a>
             <a href="logout.php" class="btn-logout">Logout</a>
         </div>
     </div>
