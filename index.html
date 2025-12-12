@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 
-    <style> 
+    <style>
         .material-symbols-outlined {
             font-variation-settings:
                 'FILL' 0,
@@ -50,10 +50,36 @@
 
 </head>
 
-<body class="font-display bg-white text-black dark:bg-background-dark dark:text-white">
+<body class="font-display bg-white text-black dark:bg-background-dark dark:text-white flex flex-col min-h-screen">
+
+    <!-- BARRA DE ACESSIBILIDADE -->
+    <div class="bg-gray-100 dark:bg-[#2a1f1f] border-b border-black/10 dark:border-white/10 px-4 py-2 flex items-center justify-center md:justify-end gap-3 overflow-x-auto whitespace-nowrap">
+        <span class="text-xs font-bold opacity-50 uppercase tracking-wider mr-2 hidden sm:inline-block">Acessibilidade:</span>
+        
+        <button id="increase-font"
+            class="px-3 py-1 border border-gray-300 dark:border-gray-600 rounded text-xs font-bold hover:bg-primary hover:text-white hover:border-primary transition-colors">
+            Aumentar
+        </button>
+        <button id="decrease-font"
+            class="px-3 py-1 border border-gray-300 dark:border-gray-600 rounded text-xs font-bold hover:bg-primary hover:text-white hover:border-primary transition-colors">
+            Diminuir
+        </button>
+        <button id="reset-font"
+            class="px-3 py-1 border border-gray-300 dark:border-gray-600 rounded text-xs font-bold hover:bg-primary hover:text-white hover:border-primary transition-colors">
+            Padrão
+        </button>
+        <button id="toggle-contrast"
+            class="px-3 py-1 border border-gray-300 dark:border-gray-600 rounded text-xs font-bold hover:bg-primary hover:text-white hover:border-primary transition-colors">
+            Contraste
+        </button>
+        <button id="tts-toggle"
+            class="px-3 py-1 border border-gray-300 dark:border-gray-600 rounded text-xs font-bold hover:bg-primary hover:text-white hover:border-primary transition-colors">
+            Ouvir
+        </button>
+    </div>
 
     <div
-        class="relative flex min-h-screen w-full flex-col bg-background-light dark:bg-background-dark group/design-root overflow-x-hidden">
+        class="relative flex w-full flex-col bg-background-light dark:bg-background-dark group/design-root overflow-x-hidden grow">
 
         <div class="layout-container flex h-full grow flex-col">
             <div class="px-4 md:px-10 lg:px-20 xl:px-40 flex flex-1 justify-center py-5">
@@ -61,66 +87,45 @@
 
 
                     <header
-                        class="flex items-center justify-between whitespace-nowrap border-b border-solid border-black dark:border-[#392828] px-4 md:px-10 py-3">
-                        <h2 class="text-black dark:text-white text-lg font-bold">Academia</h2>
-
-                        <nav
-                            class="hidden items-center gap-9 text-sm font-medium text-slate-700 dark:text-slate-300 md:flex">
-                            <div id="accessibility-controls" class="flex items-center gap-4">
-                                <button id="increase-font"
-                                    class="px-3 py-1 border rounded-sm font-bold text-black dark:text-white hover:bg-primary hover:text-white">Aumentar</button>
-                                <button id="decrease-font"
-                                    class="px-3 py-1 border rounded-sm font-bold text-black dark:text-white hover:bg-primary hover:text-white">Diminuir</button>
-                                <button id="reset-font"
-                                    class="px-3 py-1 border rounded-sm font-bold text-black dark:text-white hover:bg-primary hover:text-white">Padrão</button>
-                                <button id="toggle-contrast"
-                                    class="px-3 py-1 border rounded-sm font-bold text-black dark:text-white hover:bg-primary hover:text-white">Contraste</button>
-                                <button id="tts-toggle"
-                                    class="px-3 py-1 border rounded-sm font-bold text-black dark:text-white hover:bg-primary hover:text-white">Ouvir</button>
-                            </div>
-                        </nav>
-
-                        <button class="rounded-lg h-10 px-4 bg-primary text-white font-bold">Agende sua
-                            Aula</button>
+                        class="flex flex-col sm:flex-row items-center justify-between whitespace-nowrap border-b border-solid border-black dark:border-[#392828] px-2 sm:px-4 md:px-10 py-4 gap-4 sm:gap-0">
                         
-                        <button id="menu-btn" class="md:hidden text-black dark:text-white">
-                            <span class="material-symbols-outlined text-3xl">menu</span>
-                        </button>
+                        <div class="flex items-center justify-between w-full sm:w-auto">
+                            <h2 class="text-black dark:text-white text-xl font-bold">Academia</h2>
+                        </div>
+
+                        <!-- BOTÕES DE AÇÃO -->
+                        <div class="flex items-center gap-3 w-full sm:w-auto justify-center sm:justify-end">
+                            <a href="login.html"
+                                class="flex items-center justify-center h-10 px-4 border border-black dark:border-white rounded-lg text-black dark:text-white font-bold hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors text-sm sm:text-base">
+                                Acesse/Crie sua conta
+                            </a>
+                            
+                            <button class="rounded-lg h-10 px-4 bg-primary text-white font-bold text-sm sm:text-base">
+                                Agende sua Aula
+                            </button>
+                        </div>
                     </header>
-
-                    <div id="mobile-menu" class="hidden flex flex-col gap-4 bg-white dark:bg-[#271c1c] border border-black dark:border-[#543b3b] 
-                                   rounded-lg p-4 md:hidden mt-2 mx-4">
-                        <button id="increase-font-mobile"
-                            class="px-3 py-1 border rounded-sm font-bold text-black dark:text-white hover:bg-primary hover:text-white">Aumentar</button>
-                        <button id="decrease-font-mobile"
-                            class="px-3 py-1 border rounded-sm font-bold text-black dark:text-white hover:bg-primary hover:text-white">Diminuir</button>
-                        <button id="reset-font-mobile"
-                            class="px-3 py-1 border rounded-sm font-bold text-black dark:text-white hover:bg-primary hover:text-white">Padrão</button>
-                        <button id="toggle-contrast-mobile"
-                            class="px-3 py-1 border rounded-sm font-bold text-black dark:text-white hover:bg-primary hover:text-white">Contraste</button>
-                        <button id="tts-toggle-mobile"
-                            class="px-3 py-1 border rounded-sm font-bold text-black dark:text-white hover:bg-primary hover:text-white">Ouvir</button>
-                    </div>
-
 
                     <div class="@container mt-8">
                         <div class="@[480px]:p-4">
                             <div
                                 class="flex min-h-[480px] flex-col gap-6 bg-cover bg-center bg-no-repeat @[480px]:rounded-xl items-center justify-center p-4">
 
-                                <video class="w-full h-96 rounded-xl" controls>
+                                <!-- VÍDEO COM TAMANHO AJUSTADO (Largura máx 480px) -->
+                                <video class="w-full max-w-[480px] h-auto rounded-xl object-cover shadow-lg" controls>
                                     <source src="./videos/treino1.mp4" type="video/mp4">
                                 </video>
 
                                 <div class="flex flex-col gap-2 text-center max-w-2xl">
-                                    <h1 class="text-white text-5xl font-black leading-tight">Transforme seu corpo, mude
+                                    <h1 class="text-black dark:text-white text-5xl font-black leading-tight">Transforme seu corpo, mude
                                         sua vida.</h1>
-                                    <h2 class="text-white/90 text-base">Equipamentos de ponta, aulas dinâmicas e
+                                    <h2 class="text-black dark:text-white/90 text-base">Equipamentos de ponta, aulas dinâmicas e
                                         acompanhamento profissional.</h2>
                                 </div>
 
-                                <button class="h-12 px-5 bg-primary text-white font-bold rounded-lg">Academia
-                                    Grátis</button>
+                                <button class="h-12 px-5 bg-primary text-white font-bold rounded-lg uppercase tracking-wide">
+                                    Teste Grátis Faça Sua Inscrição
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -134,23 +139,29 @@
 
                         <div class="grid grid-cols-[repeat(auto-fit,minmax(240px,1fr))] gap-4">
 
-                            <div class="flex flex-col items-center text-center p-6 rounded-xl border border-black dark:border-[#543b3b] bg-white dark:bg-[#271c1c]">
-                                <span class="material-symbols-outlined text-primary text-4xl mb-2">fitness_center</span>
-                                <h3 class="text-black dark:text-white font-bold">Equipamentos Modernos</h3>
-                                <p class="text-black dark:text-[#d2c5c5]">Máquinas de última geração.</p>
-                            </div>
+                            <!-- CARD 1: Anabolizantes -->
+                            <a href="http://localhost/Academia/anabolizante.php"
+                                class="flex flex-col items-center text-center p-6 rounded-xl border border-black dark:border-[#543b3b] bg-white dark:bg-[#271c1c] hover:scale-[1.05] hover:shadow-xl hover:border-primary transition-all duration-300 cursor-pointer group">
+                                <span class="material-symbols-outlined text-primary text-4xl mb-2 group-hover:scale-110 transition-transform">science</span>
+                                <h3 class="text-black dark:text-white font-bold group-hover:text-primary transition-colors">Anabolizantes</h3>
+                                <p class="text-black dark:text-[#d2c5c5]">Informação especializada sobre substâncias para aumento de performance e massa muscular.</p>
+                            </a>
 
-                            <div class="flex flex-col items-center text-center p-6 rounded-xl border border-black dark:border-[#543b3b] bg-white dark:bg-[#271c1c]">
-                                <span class="material-symbols-outlined text-primary text-4xl mb-2">groups</span>
-                                <h3 class="text-black dark:text-white font-bold">Aulas em Grupo</h3>
-                                <p class="text-black dark:text-[#d2c5c5]">Spinning, Yoga, HIIT e muito mais.</p>
-                            </div>
+                            <!-- CARD 2: Depoimento -->
+                            <a href="depoimento.html"
+                                class="flex flex-col items-center text-center p-6 rounded-xl border border-black dark:border-[#543b3b] bg-white dark:bg-[#271c1c] hover:scale-[1.05] hover:shadow-xl hover:border-primary transition-all duration-300 cursor-pointer group">
+                                <span class="material-symbols-outlined text-primary text-4xl mb-2 group-hover:scale-110 transition-transform">chat_bubble</span>
+                                <h3 class="text-black dark:text-white font-bold group-hover:text-primary transition-colors">Depoimento</h3>
+                                <p class="text-black dark:text-[#d2c5c5]">Histórias reais e resultados comprovados de alunos que transformaram suas vidas aqui.</p>
+                            </a>
 
-                            <div class="flex flex-col items-center text-center p-6 rounded-xl border border-black dark:border-[#543b3b] bg-white dark:bg-[#271c1c]">
-                                <span class="material-symbols-outlined text-primary text-4xl mb-2">clinical_notes</span>
-                                <h3 class="text-black dark:text-white font-bold">Acompanhamento Profissional</h3>
-                                <p class="text-black dark:text-[#d2c5c5]">Instrutores qualificados.</p>
-                            </div>
+                            <!-- CARD 3: Suplementos -->
+                            <a href="suplementos.html"
+                                class="flex flex-col items-center text-center p-6 rounded-xl border border-black dark:border-[#543b3b] bg-white dark:bg-[#271c1c] hover:scale-[1.05] hover:shadow-xl hover:border-primary transition-all duration-300 cursor-pointer group">
+                                <span class="material-symbols-outlined text-primary text-4xl mb-2 group-hover:scale-110 transition-transform">medication</span>
+                                <h3 class="text-black dark:text-white font-bold group-hover:text-primary transition-colors">Suplementos</h3>
+                                <p class="text-black dark:text-[#d2c5c5]">Produtos de alta qualidade para complementar sua nutrição e maximizar os ganhos.</p>
+                            </a>
 
                         </div>
                     </div>
@@ -158,41 +169,38 @@
                     <div class="flex flex-col gap-8 px-4 py-16 @container">
                         <div class="text-center">
                             <h2 class="text-black dark:text-white text-4xl font-black">Nossas Aulas</h2>
-                            <p class="text-black dark:text-white/70">Clique abaixo para ver mais detalhes.</p>
+                            <p class="text-black dark:text-white/70">Escolha sua modalidade favorita.</p>
                         </div>
 
                         <div class="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-6">
 
-                            <a href="treino.php" 
-                               class="block rounded-xl overflow-hidden border border-black dark:border-[#543b3b] bg-white dark:bg-[#271c1c] 
-                                      transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:border-primary cursor-pointer group">
-                                <img class="h-48 w-full object-cover transition-opacity duration-300 group-hover:opacity-90"
-                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCy5xVhVDWUvalWFeD98tJGYJFdzdH-bBLUO61omVbHY1ZMuxONj55MIPIA2Qisyv0p1gVKVrO9AkatudTdLTmgDa855A_wZcZiiAat1r6mq5rkVXwvaTqKPAzu9dVqX6764ZfiyfsI9QAWDqt5acwP_0ZV7A802e_2JGDqpFWPK32ZgU7K7HREv28sNUw34FFl7SiMZp6qp2BC0SjdJNPMb7pkv-yV3LwMefpWrvuloROQrfF6ctrBi1PEWvTme5IvS_7X6f4BuDY" alt="Imagem de Treino" />
+                            <!-- CARD 1: TREINO (Link para treino.html) -->
+                            <a href="treino.html" class="block rounded-xl overflow-hidden border border-black dark:border-[#543b3b] bg-white dark:bg-[#271c1c] hover:opacity-90 hover:scale-[1.02] transition-all duration-300 group">
+                                <img class="h-48 w-full object-cover"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCy5xVhVDWUvalWFeD98tJGYJFdzdH-bBLUO61omVbHY1ZMuxONj55MIPIA2Qisyv0p1gVKVrO9AkatudTdLTmgDa855A_wZcZiiAat1r6mq5rkVXwvaTqKPAzu9dVqX6764ZfiyfsI9QAWDqt5acwP_0ZV7A802e_2JGDqpFWPK32ZgU7K7HREv28sNUw34FFl7SiMZp6qp2BC0SjdJNPMb7pkv-yV3LwMefpWrvuloROQrfF6ctrBi1PEWvTme5IvS_7X6f4BuDY" />
                                 <div class="p-6">
                                     <h3 class="text-black dark:text-white text-lg font-bold group-hover:text-primary transition-colors">Treino</h3>
                                     <p class="text-black dark:text-[#d2c5c5]">Treinos personalizados para força e resistência.</p>
                                 </div>
                             </a>
 
-                            <a href="danca.php" 
-                               class="block rounded-xl overflow-hidden border border-black dark:border-[#543b3b] bg-white dark:bg-[#271c1c] 
-                                      transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:border-primary cursor-pointer group">
-                                <img class="h-48 w-full object-cover transition-opacity duration-300 group-hover:opacity-90"
-                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDf3zQEtn3fb41oe_fTqBoLVHJxko-Uwvz4iegy9V3dFR2sd1HK2YfTjM0uCd7gM1qqoJ0UXYGMRNikn4ZpUAoAREVQqehRB7CXDwtpv8UtrHLlE4RuIoJrBRRIeF8mmSo-477I77yiohqu1kUIzWpljiiId9q36PrtbJP8v_LwB2NL4lmJ8YzAvZjeG-5GUaKmKRiuZNKp-pZA380lfghqmF7-Kb1eBm2tSFIK86MQktZz1Ko8_HO2Ro7QJ4btKoouRNEPs27RHJA" alt="Imagem de Dança" />
+                            <!-- CARD 2: DANÇA (Link para danca.html) -->
+                            <a href="danca.html" class="block rounded-xl overflow-hidden border border-black dark:border-[#543b3b] bg-white dark:bg-[#271c1c] hover:opacity-90 hover:scale-[1.02] transition-all duration-300 group">
+                                <img class="h-48 w-full object-cover"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDf3zQEtn3fb41oe_fTqBoLVHJxko-Uwvz4iegy9V3dFR2sd1HK2YfTjM0uCd7gM1qqoJ0UXYGMRNikn4ZpUAoAREVQqehRB7CXDwtpv8UtrHLlE4RuIoJrBRRIeF8mmSo-477I77yiohqu1kUIzWpljiiId9q36PrtbJP8v_LwB2NL4lmJ8YzAvZjeG-5GUaKmKRiuZNKp-pZA380lfghqmF7-Kb1eBm2tSFIK86MQktZz1Ko8_HO2Ro7QJ4btKoouRNEPs27RHJA" />
                                 <div class="p-6">
                                     <h3 class="text-black dark:text-white text-lg font-bold group-hover:text-primary transition-colors">Dança</h3>
-                                    <p class="text-black dark:text-[#d2c5c5]">Alta intensidade para máxima queima calórica.</p>
+                                    <p class="text-black dark:text-[#d2c5c5]">Ritmo e movimento para queima calórica.</p>
                                 </div>
                             </a>
 
-                            <a href="lutas.html" 
-                               class="block rounded-xl overflow-hidden border border-black dark:border-[#543b3b] bg-white dark:bg-[#271c1c] 
-                                      transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:border-primary cursor-pointer group">
-                                <img class="h-48 w-full object-cover transition-opacity duration-300 group-hover:opacity-90"
-                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLA5LLnqfXQFV3UkL5aqiIksArVBGkGnBPClyP1kdcIedZzELiImcZ_XOSIYoAlcWjByLrZLhgn5KulyPQ2b1VuRCHsKAzDaiZmVmt9c8TGq307pT-tigDJMcn0v2lZoqystBurDE81PW8rkPJNQUl23ZIwcCe56BoiAJLcUcPDUocdPzkErxmwxoCZXA4QDRmiCEkxR6T8syDaM9vK9kyOxpJ45T4o1pyEj-tkNw0iUyql8MJb4mVsuGHbXpbd0_zA4aubb06GTw" alt="Imagem de Luta" />
+                            <!-- CARD 3: LUTA (Link para luta.html) -->
+                            <a href="luta.html" class="block rounded-xl overflow-hidden border border-black dark:border-[#543b3b] bg-white dark:bg-[#271c1c] hover:opacity-90 hover:scale-[1.02] transition-all duration-300 group">
+                                <img class="h-48 w-full object-cover"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLA5LLnqfXQFV3UkL5aqiIksArVBGkGnBPClyP1kdcIedZzELiImcZ_XOSIYoAlcWjByLrZLhgn5KulyPQ2b1VuRCHsKAzDaiZmVmt9c8TGq307pT-tigDJMcn0v2lZoqystBurDE81PW8rkPJNQUl23ZIwcCe56BoiAJLcUcPDUocdPzkErxmwxoCZXA4QDRmiCEkxR6T8syDaM9vK9kyOxpJ45T4o1pyEj-tkNw0iUyql8MJb4mVsuGHbXpbd0_zA4aubb06GTw" />
                                 <div class="p-6">
                                     <h3 class="text-black dark:text-white text-lg font-bold group-hover:text-primary transition-colors">Luta</h3>
-                                    <p class="text-black dark:text-[#d2c5c5]">Flexibilidade, equilíbrio e bem-estar.</p>
+                                    <p class="text-black dark:text-[#d2c5c5]">Defesa pessoal, disciplina e condicionamento.</p>
                                 </div>
                             </a>
 
@@ -208,7 +216,7 @@
                                 <h2 class="text-white text-3xl font-black">Pronto para Começar?</h2>
                                 <p class="text-white/90 text-base">Agende agora sua aula experimental gratuita.</p>
 
-                                <button class="h-12 px-5 bg-white text-primary font-bold rounded-lg hover:scale-105 transition-transform">
+                                <button class="h-12 px-5 bg-white text-primary font-bold rounded-lg">
                                     Comece Agora
                                 </button>
 
@@ -218,15 +226,19 @@
 
                     <footer class="border-t border-black dark:border-[#392828] px-4 md:px-10 py-8">
                         <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+
                             <h2 class="text-black dark:text-white font-bold">Academia</h2>
+
                             <div class="flex items-center gap-6 text-black dark:text-white/80 text-sm">
                                 <a class="hover:text-primary" href="#">Termos</a>
                                 <a class="hover:text-primary" href="#">Privacidade</a>
                                 <a class="hover:text-primary" href="contato.php">Contato</a>
                             </div>
+
                             <div class="text-sm text-black dark:text-white/60">
                                 © 2025 Academia. Todos os direitos reservados.
                             </div>
+
                         </div>
                     </footer>
 
@@ -234,19 +246,46 @@
             </div>
         </div>
 
+
         <script>
             let fontSize = 100;
-            function updateFont() { document.documentElement.style.fontSize = fontSize + "%"; }
-            document.getElementById("increase-font").onclick = () => { fontSize += 10; updateFont(); };
-            document.getElementById("decrease-font").onclick = () => { if (fontSize > 50) { fontSize -= 10; updateFont(); } };
-            document.getElementById("reset-font").onclick = () => { fontSize = 100; updateFont(); };
-            document.getElementById("toggle-contrast").onclick = () => { document.documentElement.classList.toggle("dark"); };
+
+            function updateFont() {
+                document.documentElement.style.fontSize = fontSize + "%";
+            }
+
+            // CONTROLES DE ACESSIBILIDADE
+            document.getElementById("increase-font").onclick = () => {
+                fontSize += 10;
+                updateFont();
+            };
+
+            document.getElementById("decrease-font").onclick = () => {
+                if (fontSize > 50) {
+                    fontSize -= 10;
+                    updateFont();
+                }
+            };
+
+            document.getElementById("reset-font").onclick = () => {
+                fontSize = 100;
+                updateFont();
+            };
+
+
+            document.getElementById("toggle-contrast").onclick = () => {
+                document.documentElement.classList.toggle("dark");
+            };
         </script>
+
+
 
         <script>
             let ttsActive = false;
             let utterance = new SpeechSynthesisUtterance();
+
             document.getElementById("tts-toggle").onclick = () => {
+
                 if (!ttsActive) {
                     utterance.text = document.body.innerText;
                     speechSynthesis.speak(utterance);
@@ -256,41 +295,34 @@
                     speechSynthesis.cancel();
                     ttsActive = false;
                     document.getElementById("tts-toggle").innerText = "Ouvir";
-                }
+                               }
+
             };
+
         </script>
-        <script>
-            const menuBtn = document.getElementById("menu-btn");
-            const mobileMenu = document.getElementById("mobile-menu");
-            menuBtn.onclick = () => { mobileMenu.classList.toggle("hidden"); };
-            // Acessibilidade Mobile
-            document.getElementById("increase-font-mobile").onclick = () => { fontSize += 10; updateFont(); };
-            document.getElementById("decrease-font-mobile").onclick = () => { if (fontSize > 50) { fontSize -= 10; updateFont(); } };
-            document.getElementById("reset-font-mobile").onclick = () => { fontSize = 100; updateFont(); };
-            document.getElementById("toggle-contrast-mobile").onclick = () => { document.documentElement.classList.toggle("dark"); };
-            document.getElementById("tts-toggle-mobile").onclick = () => {
-                if (!ttsActive) {
-                    utterance.text = document.body.innerText;
-                    speechSynthesis.speak(utterance);
-                    ttsActive = true;
-                    document.getElementById("tts-toggle-mobile").innerText = "Parar";
-                } else {
-                    speechSynthesis.cancel();
-                    ttsActive = false;
-                    document.getElementById("tts-toggle-mobile").innerText = "Ouvir";
-                }
-            };
-        </script>
+
          <div vw class="enabled">
+
     <div vw-access-button class="active "></div>
+
     <div vw-plugin-wrapper>
+
       <div class="vw-plugin-top-wrapper"></div>
+
     </div>
+
   </div>
+
   <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+
   <script>
+
     new window.VLibras.Widget('https://vlibras.gov.br/app');
+
   </script>
+
 </body>
+
 </html>
+
 <script src="theme-toggle.js"></script>
