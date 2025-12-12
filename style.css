@@ -308,3 +308,28 @@ input, textarea, select {
     color: #333;
 }
 
+/* ============================
+   MODO CLARO (aplicado com a classe .light-theme no <html>)
+   Cores obrigatórias: branco, preto, vermelho
+   ============================ */
+.light-theme body, .light-theme {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+}
+.light-theme a { color: #000000 !important; }
+.light-theme .titulo-vermelho { color: #ff0000 !important; }
+.light-theme .btn-nav,
+.light-theme button[type="submit"],
+.light-theme #barra-acessibilidade button,
+.light-theme #barra-acessibilidade .btn-acess {
+    background-color: #ff0000 !important; /* vermelho primário */
+    color: #ffffff !important;
+    border-color: transparent !important;
+}
+.light-theme #barra-acessibilidade { background-color: #ffffff !important; border-bottom: 3px solid #ff0000 !important; }
+.light-theme .info-box, .light-theme .video-container { background-color: #ffffff; color: #000; border-left-color: #ff0000; }
+
+/* garante foco visível no modo claro */
+.light-theme a:focus, .light-theme button:focus, .light-theme input:focus { outline: 3px solid #ff0000; outline-offset: 2px; }
+
+
