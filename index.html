@@ -1,11 +1,368 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="dark" lang="pt-br">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Página Principal da Academia</title>
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings:
+                'FILL' 0,
+                'wght' 400,
+                'GRAD' 0,
+                'opsz' 24
+        }
+    </style>
+
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#ec1313",
+                        "background-light": "#ffffff",
+                        "background-dark": "#181111",
+                        "text-light": "#000000",
+                    },
+                    fontFamily: {
+                        display: ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.25rem",
+                        lg: "0.5rem",
+                        xl: "0.75rem",
+                        full: "9999px"
+                    }
+                }
+            }
+        }
+    </script>
+
 </head>
-<body>
-    
+
+<body class="font-display bg-white text-black dark:bg-background-dark dark:text-white">
+
+    <div
+        class="relative flex min-h-screen w-full flex-col bg-background-light dark:bg-background-dark group/design-root overflow-x-hidden">
+
+        <div class="layout-container flex h-full grow flex-col">
+            <div class="px-4 md:px-10 lg:px-20 xl:px-40 flex flex-1 justify-center py-5">
+                <div class="layout-content-container flex flex-col w-full max-w-[960px] flex-1">
+
+
+                    <header
+                        class="flex items-center justify-between whitespace-nowrap border-b border-solid border-black dark:border-[#392828] px-4 md:px-10 py-3">
+                        <h2 class="text-black dark:text-white text-lg font-bold">Academia</h2>
+
+                        <nav class="hidden items-center gap-9 text-sm font-medium text-slate-700 dark:text-slate-300 md:flex">
+                            <div id="accessibility-controls" class="flex items-center gap-4">
+                              <button id="increase-font"
+                                class="px-3 py-1 border rounded-sm font-bold text-black dark:text-white hover:bg-primary hover:text-white">Aumentar</button>
+                              <button id="decrease-font"
+                                class="px-3 py-1 border rounded-sm font-bold text-black dark:text-white hover:bg-primary hover:text-white">Diminuir</button>
+                              <button id="reset-font"
+                                class="px-3 py-1 border rounded-sm font-bold text-black dark:text-white hover:bg-primary hover:text-white">Padrão</button>
+                              <button id="toggle-contrast"
+                                class="px-3 py-1 border rounded-sm font-bold text-black dark:text-white hover:bg-primary hover:text-white">Contraste</button>
+                              <button id="tts-toggle"
+                                class="px-3 py-1 border rounded-sm font-bold text-black dark:text-white hover:bg-primary hover:text-white">Ouvir</button>
+                            </div>
+                          </nav>
+
+                            <button class="rounded-lg h-10 px-4 bg-primary text-white font-bold">Agende sua
+                                Aula</button>
+                        </nav>
+
+                        <button id="menu-btn" class="md:hidden text-black dark:text-white">
+                            <span class="material-symbols-outlined text-3xl">menu</span>
+                        </button>
+                        </header>
+                        
+                        <!-- MENU MOBILE FORA DO HEADER (CORRETO) -->
+                        <div id="mobile-menu"
+                            class="hidden flex flex-col gap-4 bg-white dark:bg-[#271c1c] border border-black dark:border-[#543b3b] 
+                                   rounded-lg p-4 md:hidden mt-2 mx-4">
+                                   
+                            <button id="increase-font-mobile"
+                                class="px-3 py-1 border rounded-sm font-bold text-black dark:text-white hover:bg-primary hover:text-white">
+                                Aumentar
+                            </button>
+                        
+                            <button id="decrease-font-mobile"
+                                class="px-3 py-1 border rounded-sm font-bold text-black dark:text-white hover:bg-primary hover:text-white">
+                                Diminuir
+                            </button>
+                        
+                            <button id="reset-font-mobile"
+                                class="px-3 py-1 border rounded-sm font-bold text-black dark:text-white hover:bg-primary hover:text-white">
+                                Padrão
+                            </button>
+                        
+                            <button id="toggle-contrast-mobile"
+                                class="px-3 py-1 border rounded-sm font-bold text-black dark:text-white hover:bg-primary hover:text-white">
+                                Contraste
+                            </button>
+                        
+                            <button id="tts-toggle-mobile"
+                                class="px-3 py-1 border rounded-sm font-bold text-black dark:text-white hover:bg-primary hover:text-white">
+                                Ouvir
+                            </button>
+                        </div>
+                        
+                        
+                    </header>
+
+
+                    <div class="@container mt-8">
+                        <div class="@[480px]:p-4">
+                            <div
+                                class="flex min-h-[480px] flex-col gap-6 bg-cover bg-center bg-no-repeat @[480px]:rounded-xl items-center justify-center p-4">
+
+                                <video class="w-full h-96 rounded-xl" controls>
+                                    <source src="./videos/treino1.mp4" type="video/mp4">
+                                </video>
+
+                                <div class="flex flex-col gap-2 text-center max-w-2xl">
+                                    <h1 class="text-white text-5xl font-black leading-tight">Transforme seu corpo, mude
+                                        sua vida.</h1>
+                                    <h2 class="text-white/90 text-base">Equipamentos de ponta, aulas dinâmicas e
+                                        acompanhamento profissional.</h2>
+                                </div>
+
+                                <button class="h-12 px-5 bg-primary text-white font-bold rounded-lg">Academia Grátis</button>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="flex flex-col gap-10 px-4 py-16 @container">
+                        <div class="text-center">
+                            <h2 class="text-black dark:text-white text-4xl font-black">O melhor para o seu treino</h2>
+                            <p class="text-black dark:text-white/70">Estrutura completa e ambiente motivador.</p>
+                        </div>
+
+                        <div class="grid grid-cols-[repeat(auto-fit,minmax(240px,1fr))] gap-4">
+
+                            <div
+                                class="flex flex-col items-center text-center p-6 rounded-xl border border-black dark:border-[#543b3b] bg-white dark:bg-[#271c1c]">
+                                <span class="material-symbols-outlined text-primary text-4xl mb-2">fitness_center</span>
+                                <h3 class="text-black dark:text-white font-bold">Equipamentos Modernos</h3>
+                                <p class="text-black dark:text-[#d2c5c5]">Máquinas de última geração.</p>
+                            </div>
+
+                            <div
+                                class="flex flex-col items-center text-center p-6 rounded-xl border border-black dark:border-[#543b3b] bg-white dark:bg-[#271c1c]">
+                                <span class="material-symbols-outlined text-primary text-4xl mb-2">groups</span>
+                                <h3 class="text-black dark:text-white font-bold">Aulas em Grupo</h3>
+                                <p class="text-black dark:text-[#d2c5c5]">Spinning, Yoga, HIIT e muito mais.</p>
+                            </div>
+
+                            <div
+                                class="flex flex-col items-center text-center p-6 rounded-xl border border-black dark:border-[#543b3b] bg-white dark:bg-[#271c1c]">
+                                <span class="material-symbols-outlined text-primary text-4xl mb-2">clinical_notes</span>
+                                <h3 class="text-black dark:text-white font-bold">Acompanhamento Profissional</h3>
+                                <p class="text-black dark:text-[#d2c5c5]">Instrutores qualificados.</p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col gap-8 px-4 py-16 @container">
+                        <div class="text-center">
+                            <h2 class="text-black dark:text-white text-4xl font-black">Nossas Aulas</h2>
+                            <p class="text-black dark:text-white/70">Escolha sua modalidade favorita.</p>
+                        </div>
+
+                        <div class="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-6">
+
+                            <div
+                                class="rounded-xl overflow-hidden border border-black dark:border-[#543b3b] bg-white dark:bg-[#271c1c]">
+                                <img class="h-48 w-full object-cover"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCy5xVhVDWUvalWFeD98tJGYJFdzdH-bBLUO61omVbHY1ZMuxONj55MIPIA2Qisyv0p1gVKVrO9AkatudTdLTmgDa855A_wZcZiiAat1r6mq5rkVXwvaTqKPAzu9dVqX6764ZfiyfsI9QAWDqt5acwP_0ZV7A802e_2JGDqpFWPK32ZgU7K7HREv28sNUw34FFl7SiMZp6qp2BC0SjdJNPMb7pkv-yV3LwMefpWrvuloROQrfF6ctrBi1PEWvTme5IvS_7X6f4BuDY" />
+                                <div class="p-6">
+                                    <h3 class="text-black dark:text-white text-lg font-bold">Musculação</h3>
+                                    <p class="text-black dark:text-[#d2c5c5]">Treinos personalizados para força e
+                                        resistência.</p>
+                                </div>
+                            </div>
+
+                            <div
+                                class="rounded-xl overflow-hidden border border-black dark:border-[#543b3b] bg-white dark:bg-[#271c1c]">
+                                <img class="h-48 w-full object-cover"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDf3zQEtn3fb41oe_fTqBoLVHJxko-Uwvz4iegy9V3dFR2sd1HK2YfTjM0uCd7gM1qqoJ0UXYGMRNikn4ZpUAoAREVQqehRB7CXDwtpv8UtrHLlE4RuIoJrBRRIeF8mmSo-477I77yiohqu1kUIzWpljiiId9q36PrtbJP8v_LwB2NL4lmJ8YzAvZjeG-5GUaKmKRiuZNKp-pZA380lfghqmF7-Kb1eBm2tSFIK86MQktZz1Ko8_HO2Ro7QJ4btKoouRNEPs27RHJA" />
+                                <div class="p-6">
+                                    <h3 class="text-black dark:text-white text-lg font-bold">HIIT</h3>
+                                    <p class="text-black dark:text-[#d2c5c5]">Alta intensidade para máxima queima
+                                        calórica.</p>
+                                </div>
+                            </div>
+
+                            <div
+                                class="rounded-xl overflow-hidden border border-black dark:border-[#543b3b] bg-white dark:bg-[#271c1c]">
+                                <img class="h-48 w-full object-cover"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLA5LLnqfXQFV3UkL5aqiIksArVBGkGnBPClyP1kdcIedZzELiImcZ_XOSIYoAlcWjByLrZLhgn5KulyPQ2b1VuRCHsKAzDaiZmVmt9c8TGq307pT-tigDJMcn0v2lZoqystBurDE81PW8rkPJNQUl23ZIwcCe56BoiAJLcUcPDUocdPzkErxmwxoCZXA4QDRmiCEkxR6T8syDaM9vK9kyOxpJ45T4o1pyEj-tkNw0iUyql8MJb4mVsuGHbXpbd0_zA4aubb06GTw" />
+                                <div class="p-6">
+                                    <h3 class="text-black dark:text-white text-lg font-bold">Yoga</h3>
+                                    <p class="text-black dark:text-[#d2c5c5]">Flexibilidade, equilíbrio e bem-estar.</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <div class="@container my-16">
+                        <div class="@[480px]:p-4">
+                            <div
+                                class="flex flex-col gap-6 bg-primary @[480px]:rounded-xl items-center justify-center p-8 md:p-12 text-center">
+
+                                <h2 class="text-white text-3xl font-black">Pronto para Começar?</h2>
+                                <p class="text-white/90 text-base">Agende agora sua aula experimental gratuita.</p>
+
+                                <button class="h-12 px-5 bg-white text-primary font-bold rounded-lg">
+                                    Comece Agora
+                                </button>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <footer class="border-t border-black dark:border-[#392828] px-4 md:px-10 py-8">
+                        <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+
+                            <h2 class="text-black dark:text-white font-bold">Academia</h2>
+
+                            <div class="flex items-center gap-6 text-black dark:text-white/80 text-sm">
+                                <a class="hover:text-primary" href="#">Termos</a>
+                                <a class="hover:text-primary" href="#">Privacidade</a>
+                                <a class="hover:text-primary" href="#">Contato</a>
+                            </div>
+
+                            <div class="text-sm text-black dark:text-white/60">
+                                © 2025 Academia. Todos os direitos reservados.
+                            </div>
+
+                        </div>
+                    </footer>
+
+                </div>
+            </div>
+        </div>
+
+
+        <script>
+            let fontSize = 100;
+
+            function updateFont() {
+                document.documentElement.style.fontSize = fontSize + "%";
+            }
+
+            document.getElementById("increase-font").onclick = () => {
+                fontSize += 10;
+                updateFont();
+            };
+
+            document.getElementById("decrease-font").onclick = () => {
+                if (fontSize > 50) {
+                    fontSize -= 10;
+                    updateFont();
+                }
+            };
+
+            document.getElementById("reset-font").onclick = () => {
+                fontSize = 100;
+                updateFont();
+            };
+
+
+            document.getElementById("toggle-contrast").onclick = () => {
+                document.documentElement.classList.toggle("dark");
+            };
+        </script>
+
+
+
+        <script>
+            let ttsActive = false;
+            let utterance = new SpeechSynthesisUtterance();
+
+            document.getElementById("tts-toggle").onclick = () => {
+
+                if (!ttsActive) {
+                    utterance.text = document.body.innerText;
+                    speechSynthesis.speak(utterance);
+                    ttsActive = true;
+                    document.getElementById("tts-toggle").innerText = "Parar";
+                } else {
+                    speechSynthesis.cancel();
+                    ttsActive = false;
+                    document.getElementById("tts-toggle").innerText = "Ouvir";
+                }
+            };
+        </script>
+        <script>
+            // BOTÃO DO MENU MOBILE
+            const menuBtn = document.getElementById("menu-btn");
+            const mobileMenu = document.getElementById("mobile-menu");
+        
+            menuBtn.onclick = () => {
+                mobileMenu.classList.toggle("hidden");
+            };
+        
+            // --------- ACESSIBILIDADE MOBILE --------- //
+        
+            // Fonte
+            document.getElementById("increase-font-mobile").onclick = () => {
+                fontSize += 10;
+                updateFont();
+            };
+        
+            document.getElementById("decrease-font-mobile").onclick = () => {
+                if (fontSize > 50) {
+                    fontSize -= 10;
+                    updateFont();
+                }
+            };
+        
+            document.getElementById("reset-font-mobile").onclick = () => {
+                fontSize = 100;
+                updateFont();
+            };
+        
+            // Contraste
+            document.getElementById("toggle-contrast-mobile").onclick = () => {
+                document.documentElement.classList.toggle("dark");
+            };
+        
+            // Leitura em voz alta (mobile)
+            document.getElementById("tts-toggle-mobile").onclick = () => {
+        
+                if (!ttsActive) {
+                    utterance.text = document.body.innerText;
+                    speechSynthesis.speak(utterance);
+                    ttsActive = true;
+                    document.getElementById("tts-toggle-mobile").innerText = "Parar";
+                } else {
+                    speechSynthesis.cancel();
+                    ttsActive = false;
+                    document.getElementById("tts-toggle-mobile").innerText = "Ouvir";
+                }
+        
+            };
+        </script>
+        
+        
+
 </body>
-</html>
+
+</html>  
