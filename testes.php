@@ -179,7 +179,7 @@ if ($grupo_selecionado && isset($treinosData[$grupo_selecionado])) {
     </div>
 
     <br>
-    <a href="pagina_principal.php?tema=<?php echo $tema_atual; ?>&fonte=<?php echo $tamanho_fonte; ?>" class="btn-nav" style="background:#555; color:white; text-decoration:none;">Voltar ao Menu Principal</a>
+    <a href="index.html?tema=<?php echo $tema_atual; ?>&fonte=<?php echo $tamanho_fonte; ?>" class="btn-nav" style="background:#555; color:white; text-decoration:none;">Voltar ao Menu Principal</a>
 
   </main>
 
@@ -228,3 +228,4 @@ if ($grupo_selecionado && isset($treinosData[$grupo_selecionado])) {
 
 </body>
 </html>
+<script src="theme-toggle.js"></script>
