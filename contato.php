@@ -84,6 +84,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         class="flex items-center justify-between whitespace-nowrap border-b border-solid border-gray-200 dark:border-b-[#392828] px-4 sm:px-10 py-4 w-full max-w-7xl mx-auto">
         <div class="flex items-center gap-4 text-gray-900 dark:text-white">
           <div class="size-6 text-primary">
+            <svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+              <path clip-rule="evenodd"
+                d="M12.0799 24L4 19.2479L9.95537 8.75216L18.04 13.4961L18.0446 4H29.9554L29.96 13.4961L38.0446 8.75216L44 19.2479L35.92 24L44 28.7521L38.0446 39.2479L29.96 34.5039L29.9554 44H18.0446L18.04 34.5039L9.95537 39.2479L4 28.7521L12.0799 24Z"
+                fill="currentColor" fill-rule="evenodd"></path>
+            </svg>
           </div>
           <h2 class="text-xl font-bold leading-tight tracking-[-0.015em]">Academia</h2>
         </div>
@@ -190,10 +195,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="flex flex-col md:flex-row items-center justify-between gap-4">
           <div class="flex items-center gap-3">
             <div class="size-6 text-primary">
+              <svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                <path clip-rule="evenodd"
+                  d="M12.0799 24L4 19.2479L9.95537 8.75216L18.04 13.4961L18.0446 4H29.9554L29.96 13.4961L38.0446 8.75216L44 19.2479L35.92 24L44 28.7521L38.0446 39.2479L29.96 34.5039L29.9554 44H18.0446L18.04 34.5039L9.95537 39.2479L4 28.7521L12.0799 24Z"
+                  fill="currentColor" fill-rule="evenodd"></path>
+              </svg>
             </div>
-            <p class="text-gray-900 dark:text-white font-bold">Academia</p>
+            <p class="text-gray-900 dark:text-white font-bold">Academia Fitness</p>
           </div>
-          <p class="text-gray-600 dark:text-[#b99d9d] text-sm">© 2025 Academia. Todos os direitos reservados.</p>
+          <p class="text-gray-600 dark:text-[#b99d9d] text-sm">© 2024 Academia. Todos os direitos reservados.</p>
         </div>
       </footer>
     </div>
