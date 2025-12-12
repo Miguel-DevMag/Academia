@@ -7,7 +7,7 @@ require_once 'auth_config.php';
 
 // Se já está logado, redireciona para página principal
 if (isLoggedIn()) {
-    header("Location: index.php");
+    header("Location: index.html");
     exit;
 }
 
@@ -58,36 +58,62 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
-<?php require_once 'header.php'; ?>
-
-<div class="max-w-md mx-auto login-box bg-white p-8 rounded-lg">
-  <h1 class="text-2xl font-bold mb-4">🔒 Login</h1>
-  <?php if (!empty($erro)): ?>
-    <div class="error">❌ <?php echo htmlspecialchars($erro); ?></div>
-  <?php endif; ?>
-  <?php if (!empty($sucesso)): ?>
-    <div class="success">✅ <?php echo htmlspecialchars($sucesso); ?></div>
-  <?php endif; ?>
-
-  <form method="POST" class="space-y-4">
-    <div>
-      <label for="usuario" class="block font-semibold">Usuário ou Email:</label>
-      <input type="text" id="usuario" name="usuario" required autofocus class="w-full p-3 border rounded" />
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Academia</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body { background: linear-gradient(135deg, #001f3f, #003366); min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+        .login-box { background: white; padding: 40px; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); width: 100%; max-width: 400px; }
+        .login-box h1 { text-align: center; color: #333; margin-bottom: 30px; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; color: #555; font-weight: bold; }
+        .form-group input { width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 5px; font-size: 1rem; box-sizing: border-box; }
+        .form-group input:focus { outline: none; border-color: #ec1313; }
+        .btn-login { width: 100%; padding: 12px; background: linear-gradient(135deg, #ec1313, #ff3300); color: white; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; font-size: 1rem; }
+        .btn-login:hover { background: linear-gradient(135deg, #ff3300, #ec1313); }
+        .error { color: #ff3300; background: #ffe6e6; padding: 12px; border-radius: 5px; margin-bottom: 20px; }
+        .success { color: #0056b3; background: #e6f2ff; padding: 12px; border-radius: 5px; margin-bottom: 20px; }
+        .links { text-align: center; margin-top: 20px; }
+        .links a { color: #0056b3; text-decoration: none; margin: 0 10px; }
+        .links a:hover { text-decoration: underline; }
+    </style>
+    <script src="theme-toggle.js"></script>
+</head>
+<body>
+    <div class="login-box">
+        <h1>🔒 Login</h1>
+        
+        <?php if (!empty($erro)): ?>
+            <div class="error">❌ <?php echo htmlspecialchars($erro); ?></div>
+        <?php endif; ?>
+        
+        <?php if (!empty($sucesso)): ?>
+            <div class="success">✅ <?php echo htmlspecialchars($sucesso); ?></div>
+        <?php endif; ?>
+        
+        <form method="POST">
+            <div class="form-group">
+                <label for="usuario">Usuário ou Email:</label>
+                <input type="text" id="usuario" name="usuario" required autofocus>
+            </div>
+            
+            <div class="form-group">
+                <label for="senha">Senha:</label>
+                <input type="password" id="senha" name="senha" required>
+            </div>
+            
+            <button type="submit" class="btn-login">Entrar</button>
+        </form>
+        
+        <div class="links">
+            <a href="register.php">Criar Conta</a>
+            <a href="esqueci_senha.html">Esqueci Senha</a>
+            <a href="index.html">← Voltar</a>
+        </div>
     </div>
-    <div>
-      <label for="senha" class="block font-semibold">Senha:</label>
-      <input type="password" id="senha" name="senha" required class="w-full p-3 border rounded" />
-    </div>
-    <div>
-      <button type="submit" class="btn-login w-full">Entrar</button>
-    </div>
-  </form>
-
-  <div class="links mt-4 text-center">
-    <a href="register.php" class="mr-3">Criar Conta</a>
-    <a href="esqueci_senha.php" class="mr-3">Esqueci Senha</a>
-    <a href="index.php">← Voltar</a>
-  </div>
-</div>
-
-<?php require_once 'footer.php'; ?>
+</body>
+</html>
