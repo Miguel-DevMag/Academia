@@ -119,7 +119,7 @@ $texto_para_ler = "Página de Depoimentos. Assista ao vídeo de Fabiano em um tr
     </section>
     
     <br>
-    <a href="index.php?tema=<?php echo $tema_atual; ?>&fonte=<?php echo $tamanho_fonte; ?>" class="btn-acess" style="background:#555; text-decoration:none;">Voltar ao Menu</a>
+    <a href="index.html?tema=<?php echo $tema_atual; ?>&fonte=<?php echo $tamanho_fonte; ?>" class="btn-acess" style="background:#555; text-decoration:none;">Voltar ao Menu</a>
   </main>
 
   <script>
@@ -167,3 +167,4 @@ $texto_para_ler = "Página de Depoimentos. Assista ao vídeo de Fabiano em um tr
 
 </body>
 </html>
+<script src="theme-toggle.js"></script>
