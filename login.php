@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 <button type="submit" 
                     class="w-full bg-[#ec1313] hover:bg-[#c91111] text-white font-bold py-4 rounded-xl transition-all shadow-lg flex items-center justify-center gap-2 mt-4">
-                   criar
+                  logar
                 </button>
             </form>
 
