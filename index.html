@@ -21,6 +21,13 @@
                 'GRAD' 0,
                 'opsz' 24
         }
+
+        body {
+            background-color: aliceblue;
+
+
+
+        }
     </style>
 
     <script id="tailwind-config">
@@ -48,35 +55,37 @@
         }
     </script>
 
+    
+
 </head>
 
 <body class="font-display bg-white text-black dark:bg-background-dark dark:text-white flex flex-col min-h-screen">
 
     <!-- BARRA DE ACESSIBILIDADE -->
-    <div class="bg-gray-100 dark:bg-[#2a1f1f] border-b border-black/10 dark:border-white/10 px-4 py-2 flex items-center justify-center md:justify-end gap-3 overflow-x-auto whitespace-nowrap">
-        <span class="text-xs font-bold opacity-50 uppercase tracking-wider mr-2 hidden sm:inline-block">Acessibilidade:</span>
-        
-        <button id="increase-font"
-            class="px-3 py-1 border border-gray-300 dark:border-gray-600 rounded text-xs font-bold hover:bg-primary hover:text-white hover:border-primary transition-colors">
-            Aumentar
-        </button>
-        <button id="decrease-font"
-            class="px-3 py-1 border border-gray-300 dark:border-gray-600 rounded text-xs font-bold hover:bg-primary hover:text-white hover:border-primary transition-colors">
-            Diminuir
-        </button>
-        <button id="reset-font"
-            class="px-3 py-1 border border-gray-300 dark:border-gray-600 rounded text-xs font-bold hover:bg-primary hover:text-white hover:border-primary transition-colors">
-            Padrão
-        </button>
-        <button id="toggle-contrast"
-            class="px-3 py-1 border border-gray-300 dark:border-gray-600 rounded text-xs font-bold hover:bg-primary hover:text-white hover:border-primary transition-colors">
-            Contraste
-        </button>
-        <button id="tts-toggle"
-            class="px-3 py-1 border border-gray-300 dark:border-gray-600 rounded text-xs font-bold hover:bg-primary hover:text-white hover:border-primary transition-colors">
-            Ouvir
-        </button>
-    </div>
+    <div class="bg-gray-100 dark:bg-[#2a1f1f] border-b border-black/10 dark:border-white/10 px-4 py-2 flex items-center justify-center gap-3 overflow-x-auto whitespace-nowrap">
+    <span class="text-xs font-bold opacity-50 uppercase tracking-wider mr-2 hidden sm:inline-block">Acessibilidade:</span>
+    
+    <button id="increase-font"
+        class="px-3 py-1 border border-gray-300 dark:border-gray-600 rounded text-xs font-bold hover:bg-primary hover:text-white hover:border-primary transition-colors">
+        Aumentar
+    </button>
+    <button id="decrease-font"
+        class="px-3 py-1 border border-gray-300 dark:border-gray-600 rounded text-xs font-bold hover:bg-primary hover:text-white hover:border-primary transition-colors">
+        Diminuir
+    </button>
+    <button id="reset-font"
+        class="px-3 py-1 border border-gray-300 dark:border-gray-600 rounded text-xs font-bold hover:bg-primary hover:text-white hover:border-primary transition-colors">
+        Padrão
+    </button>
+    <button id="toggle-contrast"
+        class="px-3 py-1 border border-gray-300 dark:border-gray-600 rounded text-xs font-bold hover:bg-primary hover:text-white hover:border-primary transition-colors">
+        Contraste
+    </button>
+    <button id="tts-toggle"
+        class="px-3 py-1 border border-gray-300 dark:border-gray-600 rounded text-xs font-bold hover:bg-primary hover:text-white hover:border-primary transition-colors">
+        Ouvir
+    </button>
+</div>
 
     <div
         class="relative flex w-full flex-col bg-background-light dark:bg-background-dark group/design-root overflow-x-hidden grow">
@@ -185,11 +194,10 @@
                             </a>
 
                             <!-- CARD 2: DANÇA (Link para danca.html) -->
-<<<<<<< HEAD
+
                             <a href="danca.php" class="block rounded-xl overflow-hidden border border-black dark:border-[#543b3b] bg-white dark:bg-[#271c1c] hover:opacity-90 hover:scale-[1.02] transition-all duration-300 group">
-=======
+
                             <a href="http://localhost/Academia/danca.php" class="block rounded-xl overflow-hidden border border-black dark:border-[#543b3b] bg-white dark:bg-[#271c1c] hover:opacity-90 hover:scale-[1.02] transition-all duration-300 group">
->>>>>>> db043042b00498562971f87c8470227380b0f1d4
                                 <img class="h-48 w-full object-cover"
                                     src="https://lh3.googleusercontent.com/aida-public/AB6AXuDf3zQEtn3fb41oe_fTqBoLVHJxko-Uwvz4iegy9V3dFR2sd1HK2YfTjM0uCd7gM1qqoJ0UXYGMRNikn4ZpUAoAREVQqehRB7CXDwtpv8UtrHLlE4RuIoJrBRRIeF8mmSo-477I77yiohqu1kUIzWpljiiId9q36PrtbJP8v_LwB2NL4lmJ8YzAvZjeG-5GUaKmKRiuZNKp-pZA380lfghqmF7-Kb1eBm2tSFIK86MQktZz1Ko8_HO2Ro7QJ4btKoouRNEPs27RHJA" />
                                 <div class="p-6">
