@@ -72,3 +72,6 @@ INSERT IGNORE INTO videos (titulo, descricao, src) VALUES
 ('Treino Adaptado de Musculação','Vídeo mostrando como um treino de musculação pode ser adaptado para diferentes necessidades.','videos/video1.mp4'),
 ('Aula de Dança Inclusiva','Vídeo de uma aula de dança inclusiva, mostrando movimentos adaptados e ritmo.','videos/video2.mp4'),
 ('Artes Marciais Adaptadas','Vídeo de artes marciais adaptadas, explicando técnicas seguras e defesa pessoal.','videos/video3.mp4');
+
+INSERT INTO users (nome, email, usuario, senha_hash) 
+VALUES ('Administrador', 'admin@example.com', 'admin', MD5('admin123'));
