@@ -19,13 +19,18 @@
         }
 
         .text-highlight {
-            color: #1d4ed8;
+            color: #3b82f6; 
             font-weight: 800;
         }
 
         .hero-title {
-            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
             line-height: 1.1;
+        }
+
+        /* Suaviza a transição de cores */
+        * {
+            transition: background-color 0.3s ease, border-color 0.3s ease;
         }
     </style>
 
@@ -37,7 +42,7 @@
                     colors: {
                         primary: "#ec1313",
                         "background-light": "#ffffff",
-                        "background-dark": "#181111",
+                        "background-dark": "#120d0d",
                         "text-light": "#000000",
                     },
                     fontFamily: {
@@ -57,37 +62,13 @@
 
 <body class="font-display bg-white text-black dark:bg-background-dark dark:text-white flex flex-col min-h-screen">
 
-    <div class="bg-gray-100 dark:bg-[#2a1f1f] border-b border-black/10 dark:border-white/10 px-4 py-2 flex items-center justify-center gap-3 overflow-x-auto whitespace-nowrap">
-        <span class="text-xs font-bold opacity-50 uppercase tracking-wider mr-2 hidden sm:inline-block">Acessibilidade:</span>
-<<<<<<< HEAD
-        
-        <button id="increase-font"
-            class="px-3 py-1 border border-gray-300 dark:border-gray-600 rounded text-xs font-bold hover:bg-primary hover:text-white hover:border-primary transition-colors">
-            Aumentar
-        </button>
-        <button id="decrease-font"
-            class="px-3 py-1 border border-gray-300 dark:border-gray-600 rounded text-xs font-bold hover:bg-primary hover:text-white hover:border-primary transition-colors">
-            Diminuir
-        </button>
-        <button id="reset-font"
-            class="px-3 py-1 border border-gray-300 dark:border-gray-600 rounded text-xs font-bold hover:bg-primary hover:text-white hover:border-primary transition-colors">
-            Padrão
-        </button>
-        <button id="toggle-contrast"
-            class="px-3 py-1 border border-gray-300 dark:border-gray-600 rounded text-xs font-bold hover:bg-primary hover:text-white hover:border-primary transition-colors">
-            Contraste
-        </button>
-        <button id="tts-toggle"
-            class="px-3 py-1 border border-gray-300 dark:border-gray-600 rounded text-xs font-bold hover:bg-primary hover:text-white hover:border-primary transition-colors">
-            Ouvir
-        </button> 
-=======
-        <button id="increase-font" class="px-3 py-1 border border-gray-300 dark:border-gray-600 rounded text-xs font-bold hover:bg-primary hover:text-white transition-colors">Aumentar</button>
-        <button id="decrease-font" class="px-3 py-1 border border-gray-300 dark:border-gray-600 rounded text-xs font-bold hover:bg-primary hover:text-white transition-colors">Diminuir</button>
-        <button id="reset-font" class="px-3 py-1 border border-gray-300 dark:border-gray-600 rounded text-xs font-bold hover:bg-primary hover:text-white transition-colors">Padrão</button>
-        <button id="toggle-contrast" class="px-3 py-1 border border-gray-300 dark:border-gray-600 rounded text-xs font-bold hover:bg-primary hover:text-white transition-colors">Contraste</button>
-        <button id="tts-toggle" class="px-3 py-1 border border-gray-300 dark:border-gray-600 rounded text-xs font-bold hover:bg-primary hover:text-white transition-colors">Ouvir</button>
->>>>>>> 675593ed964f363f13034cd443faacf4ad9e6686
+    <div class="bg-gray-100 dark:bg-[#1f1616] border-b border-black/10 dark:border-white/10 px-4 py-2 flex items-center justify-center gap-2 overflow-x-auto">
+        <span class="text-[10px] font-bold opacity-50 uppercase tracking-wider mr-2 hidden sm:inline-block">Acessibilidade:</span>
+        <button id="increase-font" class="px-2 py-1 border border-gray-300 dark:border-gray-600 rounded text-[10px] font-bold hover:bg-primary hover:text-white">AUMENTAR</button>
+        <button id="decrease-font" class="px-2 py-1 border border-gray-300 dark:border-gray-600 rounded text-[10px] font-bold hover:bg-primary hover:text-white">DIMINUIR</button>
+        <button id="reset-font" class="px-2 py-1 border border-gray-300 dark:border-gray-600 rounded text-[10px] font-bold hover:bg-primary hover:text-white">PADRÃO</button>
+        <button id="toggle-contrast" class="px-2 py-1 border border-gray-300 dark:border-gray-600 rounded text-[10px] font-bold hover:bg-primary hover:text-white">CONTRASTE</button>
+        <button id="tts-toggle" class="px-2 py-1 border border-gray-300 dark:border-gray-600 rounded text-[10px] font-bold hover:bg-primary hover:text-white">OUVIR</button>
     </div>
 
     <div class="relative flex w-full flex-col bg-background-light dark:bg-background-dark grow">
@@ -95,76 +76,69 @@
             <div class="px-4 md:px-10 lg:px-20 xl:px-40 flex flex-1 justify-center py-5">
                 <div class="layout-content-container flex flex-col w-full max-w-[960px] flex-1">
 
-                    <header class="flex flex-col sm:flex-row items-center justify-between border-b border-black dark:border-[#392828] py-4 gap-4">
-                        <h2 class="text-black dark:text-white text-xl font-bold">Academia</h2>
-                        <div class="flex items-center gap-3 w-full sm:w-auto justify-center sm:justify-end">
-<<<<<<< HEAD
-                            <a href="login.php"
-                                class="flex items-center justify-center h-10 px-4 border border-black dark:border-white rounded-lg text-black dark:text-white font-bold hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors text-sm sm:text-base">
-=======
-                            <a href="login.html" class="flex items-center h-10 px-4 border border-black dark:border-white rounded-lg font-bold hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors text-sm sm:text-base">
->>>>>>> 675593ed964f363f13034cd443faacf4ad9e6686
+                    <header class="flex items-center justify-between border-b border-black/10 dark:border-white/10 py-6 gap-4">
+                        <h2 class="text-black dark:text-white text-xl font-bold tracking-tight">Academia</h2>
+                        <div class="flex items-center gap-3">
+                            <a href="login.php" class="hidden sm:flex items-center h-10 px-4 border border-black/20 dark:border-white/20 rounded-lg font-bold hover:bg-white hover:text-black text-sm">
                                 Acesse/Crie sua conta
                             </a>
-                            <button class="rounded-lg h-10 px-4 bg-primary text-white font-bold text-sm sm:text-base">
-                                Agende sua Aula
                             </button>
                         </div>
                     </header>
 
-                    <main class="py-12">
-                        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-100 dark:bg-orange-900/30 mb-8">
-                            <span class="material-symbols-outlined text-orange-600 text-lg">workspace_premium</span>
-                            <span class="text-orange-600 font-bold text-sm md:text-base">100% Acessível</span>
+                    <main class="py-16">
+                        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-orange-500/10 border border-orange-500/20 mb-8">
+                            <span class="material-symbols-outlined text-orange-500 text-sm">workspace_premium</span>
+                            <span class="text-orange-500 font-bold text-xs uppercase tracking-wide">100% Acessível</span>
                         </div>
 
                         <h1 class="hero-title text-black dark:text-white font-black tracking-tight">
                             Fitness para <span class="text-highlight">Todos</span><br> Sem Barreiras
                         </h1>
                         
-                        <p class="mt-6 text-lg text-gray-600 dark:text-gray-400 max-w-2xl">
+                        <p class="mt-6 text-lg text-gray-600 dark:text-gray-400 max-w-2xl leading-relaxed">
                             Nossa academia é projetada para ser inclusiva, com ferramentas de acessibilidade digitais e físicas.
                         </p>
 
-                        <div class="flex flex-wrap justify-between gap-8 py-12 px-4 mt-8 border-b dark:border-[#392828]">
+                        <div class="flex flex-wrap justify-between gap-6 py-12 mt-8 border-b border-black/10 dark:border-white/10">
                             <div class="flex items-center gap-4">
-                                <div class="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-2xl text-blue-700 dark:text-blue-400">
+                                <div class="w-14 h-14 flex items-center justify-center bg-blue-500/10 rounded-2xl text-blue-500">
                                     <span class="material-symbols-outlined text-3xl">groups</span>
                                 </div>
                                 <div>
                                     <p class="text-2xl font-black">500+</p>
-                                    <p class="text-sm opacity-70">Alunos Ativos</p>
+                                    <p class="text-xs font-medium opacity-60">Alunos Ativos</p>
                                 </div>
                             </div>
                             <div class="flex items-center gap-4">
-                                <div class="p-4 bg-orange-50 dark:bg-orange-900/20 rounded-2xl text-orange-600">
+                                <div class="w-14 h-14 flex items-center justify-center bg-orange-500/10 rounded-2xl text-orange-500">
                                     <span class="material-symbols-outlined text-3xl">workspace_premium</span>
                                 </div>
                                 <div>
                                     <p class="text-2xl font-black">50+</p>
-                                    <p class="text-sm opacity-70">Treinos Acessíveis</p>
+                                    <p class="text-xs font-medium opacity-60">Treinos Acessíveis</p>
                                 </div>
                             </div>
                             <div class="flex items-center gap-4">
-                                <div class="p-4 bg-indigo-50 dark:bg-indigo-900/20 rounded-2xl text-indigo-700 dark:text-indigo-400">
+                                <div class="w-14 h-14 flex items-center justify-center bg-indigo-500/10 rounded-2xl text-indigo-500">
                                     <span class="material-symbols-outlined text-3xl">schedule</span>
                                 </div>
                                 <div>
                                     <p class="text-2xl font-black">24/7</p>
-                                    <p class="text-sm opacity-70">Acesso Online</p>
+                                    <p class="text-xs font-medium opacity-60">Acesso Online</p>
                                 </div>
                             </div>
                         </div>
                     </main>
 
-                    <div class="@container mb-16">
-                        <div class="flex flex-col gap-6 items-center justify-center p-4 bg-gray-50 dark:bg-[#1f1616] rounded-xl">
-                            <video class="w-full max-w-[480px] h-auto rounded-xl shadow-lg" controls>
+                    <div class="mb-16">
+                        <div class="flex flex-col gap-8 items-center justify-center p-8 bg-gray-100 dark:bg-[#1f1616] rounded-3xl">
+                            <video class="w-full max-w-[540px] aspect-video rounded-2xl overflow-hidden shadow-2xl" controls>
                                 <source src="./videos/treino1.mp4" type="video/mp4">
                             </video>
-                            <div class="text-center max-w-2xl">
-                                <h2 class="text-black dark:text-white text-3xl font-black">Transforme seu corpo</h2>
-                                <p class="text-black dark:text-white/70">Equipamentos de ponta e acompanhamento profissional.</p>
+                            <div class="text-center max-w-md">
+                                <h2 class="text-2xl font-black mb-2">Transforme seu corpo</h2>
+                                <p class="text-gray-500 dark:text-gray-400">Equipamentos de ponta e acompanhamento profissional para todos os níveis.</p>
                             </div>
                         </div>
                     </div>
@@ -176,71 +150,66 @@
                         </p>
                         
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                            <div class="p-6 rounded-2xl border border-black/10 dark:border-white/10 text-left hover:shadow-lg transition-shadow">
-                                <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-xl flex items-center justify-center text-blue-600 mb-4">
+                            <button onclick="location.href='treino.php'" class="p-8 rounded-3xl border border-white/10 bg-[#1f1616] text-left hover:border-primary/50 transition-all group">
+                                <div class="w-12 h-12 bg-blue-900/30 rounded-xl flex items-center justify-center text-blue-500 mb-6">
                                     <span class="material-symbols-outlined">fitness_center</span>
                                 </div>
-                                <h3 class="font-bold text-lg mb-2">Treinos Detalhados</h3>
-                                <p class="text-sm opacity-70 mb-4">Exercícios com descrições textuais completas e claras.</p>
-                                <a href="#" class="text-primary font-bold text-sm flex items-center gap-1">Saiba mais <span class="material-symbols-outlined text-xs">arrow_forward</span></a>
-                            </div>
+                                <h3 class="font-bold text-xl mb-3">Treinos Detalhados</h3>
+                                <p class="text-sm opacity-70 mb-6">Exercícios com descrições textuais completas e claras.</p>
+                                <span class="text-primary font-bold text-sm flex items-center gap-1 group-hover:gap-2">
+                                    Saiba mais <span class="material-symbols-outlined text-xs">arrow_forward</span>
+                                </span>
+                            </button>
 
-<<<<<<< HEAD
-                            <!-- CARD 2: DANÇA (Link para danca.html) -->
-                          
-                            <a href="http://localhost/Academia/danca.php" class="block rounded-xl overflow-hidden border border-black dark:border-[#543b3b] bg-white dark:bg-[#271c1c] hover:opacity-90 hover:scale-[1.02] transition-all duration-300 group">
-                                <img class="h-48 w-full object-cover"
-                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDf3zQEtn3fb41oe_fTqBoLVHJxko-Uwvz4iegy9V3dFR2sd1HK2YfTjM0uCd7gM1qqoJ0UXYGMRNikn4ZpUAoAREVQqehRB7CXDwtpv8UtrHLlE4RuIoJrBRRIeF8mmSo-477I77yiohqu1kUIzWpljiiId9q36PrtbJP8v_LwB2NL4lmJ8YzAvZjeG-5GUaKmKRiuZNKp-pZA380lfghqmF7-Kb1eBm2tSFIK86MQktZz1Ko8_HO2Ro7QJ4btKoouRNEPs27RHJA" />
-                                <div class="p-6">
-                                    <h3 class="text-black dark:text-white text-lg font-bold group-hover:text-primary transition-colors">Dança</h3>
-                                    <p class="text-black dark:text-[#d2c5c5]">Ritmo e movimento para queima calórica.</p>
-=======
-                            <div class="p-6 rounded-2xl border border-black/10 dark:border-white/10 text-left hover:shadow-lg transition-shadow">
-                                <div class="w-12 h-12 bg-orange-100 dark:bg-orange-900/30 rounded-xl flex items-center justify-center text-orange-600 mb-4">
+                            <button onclick="location.href='#'" class="p-8 rounded-3xl border border-white/10 bg-[#1f1616] text-left hover:border-primary/50 transition-all group">
+                                <div class="w-12 h-12 bg-orange-900/30 rounded-xl flex items-center justify-center text-orange-600 mb-6">
                                     <span class="material-symbols-outlined">videocam</span>
->>>>>>> 675593ed964f363f13034cd443faacf4ad9e6686
                                 </div>
-                                <h3 class="font-bold text-lg mb-2">Vídeos Acessíveis</h3>
-                                <p class="text-sm opacity-70 mb-4">Vídeos com legendas e tradução em Libras disponível.</p>
-                                <a href="#" class="text-primary font-bold text-sm flex items-center gap-1">Saiba mais <span class="material-symbols-outlined text-xs">arrow_forward</span></a>
-                            </div>
+                                <h3 class="font-bold text-xl mb-3">Vídeos Acessíveis</h3>
+                                <p class="text-sm opacity-70 mb-6">Vídeos com legendas e tradução em Libras disponível.</p>
+                                <span class="text-primary font-bold text-sm flex items-center gap-1 group-hover:gap-2">
+                                    Saiba mais <span class="material-symbols-outlined text-xs">arrow_forward</span>
+                                </span>
+                            </button>
 
-                            <div class="p-6 rounded-2xl border border-black/10 dark:border-white/10 text-left hover:shadow-lg transition-shadow">
-                                <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-xl flex items-center justify-center text-blue-600 mb-4">
+                            <button onclick="location.href='#'" class="p-8 rounded-3xl border border-white/10 bg-[#1f1616] text-left hover:border-primary/50 transition-all group">
+                                <div class="w-12 h-12 bg-blue-900/30 rounded-xl flex items-center justify-center text-blue-500 mb-6">
                                     <span class="material-symbols-outlined">chat_bubble</span>
                                 </div>
-                                <h3 class="font-bold text-lg mb-2">Contato Textual</h3>
-                                <p class="text-sm opacity-70 mb-4">Comunicação via formulário para total acessibilidade.</p>
-                                <a href="#" class="text-primary font-bold text-sm flex items-center gap-1">Saiba mais <span class="material-symbols-outlined text-xs">arrow_forward</span></a>
-                            </div>
+                                <h3 class="font-bold text-xl mb-3">Contato Textual</h3>
+                                <p class="text-sm opacity-70 mb-6">Comunicação via formulário para total acessibilidade.</p>
+                                <span class="text-primary font-bold text-sm flex items-center gap-1 group-hover:gap-2">
+                                    Saiba mais <span class="material-symbols-outlined text-xs">arrow_forward</span>
+                                </span>
+                            </button>
                         </div>
                     </div>
 
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 py-16">
-                        <a href="anabolizante.php" class="flex flex-col items-center text-center p-6 rounded-xl border border-black dark:border-[#543b3b] bg-white dark:bg-[#271c1c] hover:border-primary transition-all">
-                            <span class="material-symbols-outlined text-primary text-4xl mb-2">science</span>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 py-16">
+                        <a href="anabolizante.php" class="flex flex-col items-center text-center p-8 rounded-3xl border border-white/10 bg-[#1f1616] hover:bg-[#2a1f1f] hover:border-primary group">
+                            <span class="material-symbols-outlined text-primary text-4xl mb-4 group-hover:scale-110 transition-transform">science</span>
                             <h3 class="font-bold">Anabolizantes</h3>
-                            <p class="text-sm opacity-70">Informação especializada sobre performance.</p>
+                            <p class="text-xs opacity-60 mt-2">Informação especializada sobre performance.</p>
                         </a>
-                        <a href="suplementos.php" class="flex flex-col items-center text-center p-6 rounded-xl border border-black dark:border-[#543b3b] bg-white dark:bg-[#271c1c] hover:border-primary transition-all">
-                            <span class="material-symbols-outlined text-primary text-4xl mb-2">pill</span>
+                        <a href="suplementos.php" class="flex flex-col items-center text-center p-8 rounded-3xl border border-white/10 bg-[#1f1616] hover:bg-[#2a1f1f] hover:border-primary group">
+                            <span class="material-symbols-outlined text-primary text-4xl mb-4 group-hover:scale-110 transition-transform">pill</span>
                             <h3 class="font-bold">Suplementos</h3>
-                            <p class="text-sm opacity-70">Melhore seus resultados com suplementação.</p>
+                            <p class="text-xs opacity-60 mt-2">Melhore seus resultados com suplementação.</p>
                         </a>
-                        <a href="depoimento.html" class="flex flex-col items-center text-center p-6 rounded-xl border border-black dark:border-[#543b3b] bg-white dark:bg-[#271c1c] hover:border-primary transition-all">
-                            <span class="material-symbols-outlined text-primary text-4xl mb-2">reviews</span>
+                        <a href="depoimento.html" class="flex flex-col items-center text-center p-8 rounded-3xl border border-white/10 bg-[#1f1616] hover:bg-[#2a1f1f] hover:border-primary group">
+                            <span class="material-symbols-outlined text-primary text-4xl mb-4 group-hover:scale-110 transition-transform">reviews</span>
                             <h3 class="font-bold">Depoimentos</h3>
-                            <p class="text-sm opacity-70">Histórias reais de superação dos nossos alunos.</p>
+                            <p class="text-xs opacity-60 mt-2">Histórias reais de superação dos nossos alunos.</p>
                         </a>
                     </div>
 
-                    <footer class="border-t border-black dark:border-[#392828] py-8">
+                    <footer class="border-t border-white/10 py-10">
                         <div class="flex flex-col md:flex-row justify-between items-center gap-8">
                             <h2 class="font-bold">Academia</h2>
-                            <div class="flex items-center gap-6 text-sm">
+                            <div class="flex items-center gap-8 text-sm font-medium">
                                 <a class="hover:text-primary" href="contato.php">Contato</a>
                                 <a class="hover:text-primary" href="depoimento.html">Depoimentos</a>
-                                <span class="opacity-60">© 2025 Academia.</span>
+                                <span class="opacity-40">© 2025 Academia.</span>
                             </div>
                         </div>
                     </footer>
@@ -266,11 +235,11 @@
                 utterance.text = document.body.innerText;
                 speechSynthesis.speak(utterance);
                 ttsActive = true;
-                document.getElementById("tts-toggle").innerText = "Parar";
+                document.getElementById("tts-toggle").innerText = "PARAR";
             } else {
                 speechSynthesis.cancel();
                 ttsActive = false;
-                document.getElementById("tts-toggle").innerText = "Ouvir";
+                document.getElementById("tts-toggle").innerText = "OUVIR";
             }
         };
     </script>
