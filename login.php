@@ -33,56 +33,76 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         .bg-card-dark { background-color: #1f1616; }
     </style>
 </head>
-<body class="bg-custom-dark text-white min-h-screen flex items-center justify-center p-4">
 
-    <div class="flex flex-col md:flex-row w-full max-w-5xl bg-card-dark rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl">
-        
-        <div class="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
-            <a href="index.html" class="flex items-center gap-2 text-sm opacity-60 hover:opacity-100 mb-8 transition-opacity">
-                <span class="material-symbols-outlined text-sm">arrow_back</span>
-                Voltar para o início
-            </a>
 
-            <h1 class="text-4xl font-black mb-2">login</h1>
-            <p class="text-gray-400 mb-8">Faça o login e fique atento as nossas novidades e promôções.</p>
+<body class="bg-custom-dark text-white min-h-screen flex flex-col">
 
-            <?php if ($erro): ?>
-                <div class="bg-red-500/10 border border-red-500/50 text-red-500 p-3 rounded-xl text-sm mb-6 flex items-center gap-2">
-                    <span class="material-symbols-outlined text-sm">error</span>
-                    <?php echo $erro; ?>
-                </div>
-            <?php endif; ?>
+    <div class="w-full bg-gray-100 dark:bg-[#1f1616] border-b border-black/10 dark:border-white/10 px-4 py-2 flex items-center justify-center gap-2 overflow-x-auto z-50">
+        <span class="text-[10px] font-bold opacity-50 uppercase tracking-wider mr-2 hidden sm:inline-block text-black dark:text-white">Acessibilidade:</span>
+        <button id="increase-font" class="px-2 py-1 border border-gray-300 dark:border-gray-600 rounded text-[10px] font-bold text-black dark:text-white hover:bg-primary hover:text-white transition-colors">AUMENTAR</button>
+        <button id="decrease-font" class="px-2 py-1 border border-gray-300 dark:border-gray-600 rounded text-[10px] font-bold text-black dark:text-white hover:bg-primary hover:text-white transition-colors">DIMINUIR</button>
+        <button id="reset-font" class="px-2 py-1 border border-gray-300 dark:border-gray-600 rounded text-[10px] font-bold text-black dark:text-white hover:bg-primary hover:text-white transition-colors">PADRÃO</button>
+        <button id="toggle-contrast" class="px-2 py-1 border border-gray-300 dark:border-gray-600 rounded text-[10px] font-bold text-black dark:text-white hover:bg-primary hover:text-white transition-colors">CONTRASTE</button>
+        <button id="tts-toggle" class="px-2 py-1 border border-gray-300 dark:border-gray-600 rounded text-[10px] font-bold text-black dark:text-white hover:bg-primary hover:text-white transition-colors">OUVIR</button>
+    </div>
 
-            <form action="" method="POST" class="space-y-4">
-                <input type="text" name="nome" placeholder="Nome Completo" 
-                    class="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-4 focus:outline-none focus:border-[#ec1313] transition-colors">
-                
-                
-                <input type="password" name="senha" placeholder="Senha" required
-                    class="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-4 focus:outline-none focus:border-[#ec1313] transition-colors">
-
-                <button type="submit" 
-                    class="w-full bg-[#ec1313] hover:bg-[#c91111] text-white font-bold py-4 rounded-xl transition-all shadow-lg flex items-center justify-center gap-2 mt-4">
-                  logar
-                </button>
-            </form>
-
-            <p class="mt-8 text-center text-sm opacity-60">
-                não possui conta? <a href="criar_conta.html" class="text-[#ec1313] font-bold hover:underline">Entrar</a>
-            </p>
-        </div>
-
-        <div class="hidden md:block w-1/2 relative">
-            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070&auto=format&fit=crop" 
-                 alt="Treino" 
-                 class="absolute inset-0 w-full h-full object-cover">
+    <main class="flex-grow flex items-center justify-center p-4">
+        <div class="flex flex-col md:flex-row w-full max-w-5xl bg-card-dark rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl">
             
-            <div class="absolute inset-0 bg-gradient-to-t from-[#120d0d] via-transparent to-transparent p-12 flex flex-col justify-end">
-                <h2 class="text-4xl font-black leading-tight mb-4">Junte-se ao time.</h2>
-                <p class="text-gray-300">Comece sua jornada de transformação hoje mesmo com a melhor estrutura.</p>
+            <div class="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
+                <a href="index.html" class="flex items-center gap-2 text-sm opacity-60 hover:opacity-100 mb-8 transition-opacity">
+                    <span class="material-symbols-outlined text-sm">arrow_back</span>
+                    Voltar para o início
+                </a>
+
+                <h1 class="text-4xl font-black mb-2">login</h1>
+                <p class="text-gray-400 mb-8">Faça o login e fique atento às nossas novidades e promoções.</p>
+
+                <?php if ($erro): ?>
+                    <div class="bg-red-500/10 border border-red-500/50 text-red-500 p-3 rounded-xl text-sm mb-6 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-sm">error</span>
+                        <?php echo $erro; ?>
+                    </div>
+                <?php endif; ?>
+
+                <form action="" method="POST" class="space-y-4">
+                    <input type="text" name="nome" placeholder="Nome Completo" 
+                        class="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-4 focus:outline-none focus:border-[#ec1313] transition-colors">
+                    
+                    <input type="password" name="senha" placeholder="Senha" required
+                        class="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-4 focus:outline-none focus:border-[#ec1313] transition-colors">
+
+                    <button type="submit" 
+                        class="w-full bg-[#ec1313] hover:bg-[#c91111] text-white font-bold py-4 rounded-xl transition-all shadow-lg flex items-center justify-center gap-2 mt-4">
+                      logar
+                    </button>
+                </form>
+
+                <p class="mt-8 text-center text-sm opacity-60">
+                    não possui conta? <a href="criar_conta.html" class="text-[#ec1313] font-bold hover:underline">Entrar</a>
+                </p>
+            </div>
+
+            <div class="hidden md:block w-1/2 relative">
+                <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070&auto=format&fit=crop" 
+                     alt="Treino" 
+                     class="absolute inset-0 w-full h-full object-cover">
+                
+                <div class="absolute inset-0 bg-gradient-to-t from-[#120d0d] via-transparent to-transparent p-12 flex flex-col justify-end">
+                    <h2 class="text-4xl font-black leading-tight mb-4 text-white">Junte-se ao time.</h2>
+                    <p class="text-gray-300">Comece sua jornada de transformação hoje mesmo com a melhor estrutura.</p>
+                </div>
             </div>
         </div>
-    </div>
+    </main>
+
+    <script>
+        let fontSize = 100;
+        document.getElementById("increase-font").onclick = () => { fontSize += 10; document.documentElement.style.fontSize = fontSize + "%"; };
+        document.getElementById("decrease-font").onclick = () => { if(fontSize > 50) fontSize -= 10; document.documentElement.style.fontSize = fontSize + "%"; };
+        document.getElementById("reset-font").onclick = () => { fontSize = 100; document.documentElement.style.fontSize = "100%"; };
+        document.getElementById("toggle-contrast").onclick = () => document.documentElement.classList.toggle("dark");
+    </script>
 
 </body>
 </html>
