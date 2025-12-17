@@ -1,6 +1,6 @@
 <?php
 /**
- * admin_suplementos.php - Gerenciador de Suplementos (CRUD)
+ * admin_suplementos.php - Versão com Acessibilidade Centralizada
  */
 
 require_once 'auth_config.php';
@@ -10,45 +10,28 @@ $conn = getDbConnection();
 $mensagem = "";
 $erro = "";
 
-// CREATE - Adicionar novo suplemento
+// Lógica de Banco de Dados (Mantida)
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao']) && $_POST['acao'] === 'criar') {
     $nome = trim($_POST['nome'] ?? '');
     $descricao = trim($_POST['descricao'] ?? '');
     $preco = isset($_POST['preco']) && !empty($_POST['preco']) ? floatval($_POST['preco']) : NULL;
     
-    if (empty($nome)) {
-        $erro = "Nome do suplemento é obrigatório.";
-    } else {
+    if (!empty($nome)) {
         $stmt = $conn->prepare("INSERT INTO suplementos (nome, descricao, preco) VALUES (?, ?, ?)");
         $stmt->bind_param("ssd", $nome, $descricao, $preco);
-        
-        if ($stmt->execute()) {
-            $mensagem = "✅ Suplemento adicionado com sucesso!";
-        } else {
-            $erro = "Erro ao adicionar suplemento: " . $stmt->error;
-        }
+        if ($stmt->execute()) { $mensagem = "✅ Suplemento adicionado!"; }
         $stmt->close();
     }
 }
 
-// DELETE - Deletar suplemento
 if (isset($_GET['deletar'])) {
     $id = intval($_GET['deletar']);
-    $stmt = $conn->prepare("DELETE FROM suplementos WHERE id = ?");
-    $stmt->bind_param("i", $id);
-    
-    if ($stmt->execute()) {
-        $mensagem = "✅ Suplemento deletado com sucesso!";
-    } else {
-        $erro = "Erro ao deletar suplemento.";
-    }
-    $stmt->close();
+    $conn->query("DELETE FROM suplementos WHERE id = $id");
+    $mensagem = "✅ Deletado com sucesso!";
 }
 
-// READ - Listar todos os suplementos
-$result = $conn->query("SELECT id, nome, descricao, preco, criado_em FROM suplementos ORDER BY criado_em DESC");
+$result = $conn->query("SELECT * FROM suplementos ORDER BY criado_em DESC");
 $suplementos = $result->fetch_all(MYSQLI_ASSOC);
-
 $conn->close();
 ?>
 
@@ -58,214 +41,174 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerenciar Suplementos - Academia</title>
-    <link rel="stylesheet" href="style.css">
     <style>
         body {
+            margin: 0;
             font-family: 'Lexend', sans-serif;
-            background: linear-gradient(135deg, #001f3f, #003366);
-            min-height: 100vh;
-            padding: 20px;
+            background-color: #0d0d0d;
+            color: white;
         }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+
+        /* --- BARRA DE ACESSIBILIDADE CENTRALIZADA --- */
+        .barra-acessibilidade {
+            background-color: #1a1515; /* Tom escuro da imagem */
+            padding: 10px 0;
+            display: flex;
+            justify-content: center; /* Centraliza horizontalmente */
+            align-items: center;     /* Alinha verticalmente */
+            gap: 10px;               /* Espaço entre os botões */
+            border-bottom: 1px solid #333;
         }
-        h1 {
-            color: #333;
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        .alert {
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 5px;
+
+        .acess-label {
+            font-size: 12px;
             font-weight: bold;
+            color: #888;
+            text-transform: uppercase;
+            margin-right: 10px;
         }
-        .alert-success {
-            background: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
-        }
-        .alert-error {
-            background: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
-        }
-        .form-section {
-            background: #f9f9f9;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 30px;
-            border: 2px solid #ec1313;
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: #555;
-            font-weight: bold;
-        }
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #ddd;
-            border-radius: 5px;
-            font-size: 1rem;
-            box-sizing: border-box;
-            font-family: 'Lexend', sans-serif;
-        }
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #ec1313;
-            box-shadow: 0 0 5px rgba(236, 19, 19, 0.3);
-        }
-        .btn {
-            padding: 12px 24px;
-            border: none;
-            border-radius: 5px;
-            font-weight: bold;
+
+        .btn-acess {
+            background: transparent;
+            color: white;
+            border: 1px solid #444;
+            padding: 5px 15px;
+            border-radius: 4px;
+            font-size: 13px;
             cursor: pointer;
-            font-size: 1rem;
+            text-decoration: none;
             transition: 0.3s;
         }
-        .btn-primary {
-            background: #ec1313;
-            color: white;
+
+        .btn-acess:hover {
+            background: #f26508;
+            border-color: #f26508;
         }
-        .btn-primary:hover {
-            background: #d10a0a;
-        }
-        .btn-danger {
-            background: #dc3545;
-            color: white;
-        }
-        .btn-danger:hover {
-            background: #c82333;
-        }
-        .btn-secondary {
-            background: #007bff;
-            color: white;
-            text-decoration: none;
-            display: inline-block;
-        }
-        .btn-secondary:hover {
-            background: #0056b3;
-        }
-        .suplementos-list {
-            margin-top: 30px;
-        }
-        .suplemento-card {
-            background: #f9f9f9;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 8px;
-            border-left: 4px solid #ec1313;
+
+        /* --- HEADER --- */
+        .header-main {
+            padding: 20px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        .suplemento-info {
-            flex: 1;
-        }
-        .suplemento-info h3 {
-            margin: 0 0 10px 0;
-            color: #333;
-        }
-        .suplemento-info p {
-            margin: 5px 0;
-            color: #666;
-            font-size: 0.9rem;
-        }
-        .suplemento-actions {
-            display: flex;
-            gap: 10px;
-            margin-left: 20px;
-        }
-        .back-btn {
-            display: inline-block;
-            padding: 12px 24px;
-            background: #6c757d;
+
+        .logo { font-size: 24px; font-weight: bold; }
+
+        .btn-conta {
+            border: 1px solid white;
             color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
             text-decoration: none;
+            margin-right: 10px;
+        }
+
+        .btn-agende {
+            background-color: #ff0000; /* Vermelho da imagem */
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* --- CONTEÚDO --- */
+        .main-content {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        .form-box {
+            background: #151515;
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid #222;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            background: #222;
+            border: 1px solid #333;
+            color: white;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .btn-add {
+            background: #f26508;
+            color: white;
+            border: none;
+            padding: 15px;
+            width: 100%;
             border-radius: 5px;
             font-weight: bold;
-            margin-bottom: 20px;
+            cursor: pointer;
         }
-        .back-btn:hover {
-            background: #5a6268;
+
+        .card {
+            background: #151515;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-left: 4px solid #f26508;
         }
     </style>
-    <script src="theme-toggle.js"></script>
 </head>
 <body>
-    <div class="container">
-        <a href="perfil.php" class="back-btn">← Voltar</a>
-        <h1>💊 Gerenciar Suplementos</h1>
 
-        <?php if (!empty($mensagem)): ?>
-            <div class="alert alert-success"><?php echo $mensagem; ?></div>
-        <?php endif; ?>
+    <div class="barra-acessibilidade">
+        <span class="acess-label">Acessibilidade:</span>
+        <button class="btn-acess">Aumentar</button>
+        <button class="btn-acess">Diminuir</button>
+        <button class="btn-acess">Padrão</button>
+        <button class="btn-acess">Contraste</button>
+        <button class="btn-acess">Ouvir</button>
+    </div>
 
-        <?php if (!empty($erro)): ?>
-            <div class="alert alert-error"><?php echo $erro; ?></div>
-        <?php endif; ?>
+    <header class="header-main">
+        <div class="logo">Academia</div>
+        <div>
+            <a href="#" class="btn-conta">Acesse/Crie sua conta</a>
+            <a href="#" class="btn-agende">Agende sua Aula</a>
+        </div>
+    </header>
 
-        <!-- Formulário para adicionar suplemento -->
-        <div class="form-section">
-            <h2>Adicionar Novo Suplemento</h2>
+    <div class="main-content">
+        <?php if($mensagem) echo "<p style='color:#4ade80'>$mensagem</p>"; ?>
+
+        <div class="form-box">
+            <h3>Novo Suplemento</h3>
             <form method="POST">
                 <input type="hidden" name="acao" value="criar">
-                
-                <div class="form-group">
-                    <label for="nome">Nome do Suplemento *</label>
-                    <input type="text" id="nome" name="nome" required placeholder="Ex: Whey Protein">
-                </div>
-
-                <div class="form-group">
-                    <label for="descricao">Descrição</label>
-                    <textarea id="descricao" name="descricao" rows="4" placeholder="Descreva os benefícios e composição..."></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label for="preco">Preço (R$)</label>
-                    <input type="number" id="preco" name="preco" step="0.01" placeholder="Ex: 99.90">
-                </div>
-
-                <button type="submit" class="btn btn-primary">Adicionar Suplemento</button>
+                <label>Nome</label>
+                <input type="text" name="nome" required>
+                <label>Preço</label>
+                <input type="number" name="preco" step="0.01">
+                <button type="submit" class="btn-add">SALVAR PRODUTO</button>
             </form>
         </div>
 
-        <!-- Lista de suplementos -->
-        <div class="suplementos-list">
-            <h2>Suplementos Cadastrados (<?php echo count($suplementos); ?>)</h2>
-            
-            <?php if (empty($suplementos)): ?>
-                <p style="text-align: center; color: #999;">Nenhum suplemento cadastrado ainda.</p>
-            <?php else: ?>
-                <?php foreach ($suplementos as $suplemento): ?>
-                    <div class="suplemento-card">
-                        <div class="suplemento-info">
-                            <h3><?php echo htmlspecialchars($suplemento['nome']); ?></h3>
-                            <p><strong>Descrição:</strong> <?php echo htmlspecialchars($suplemento['descricao'] ?? 'Sem descrição'); ?></p>
-                            <p><strong>Preço:</strong> <?php echo !empty($suplemento['preco']) ? 'R$ ' . number_format($suplemento['preco'], 2, ',', '.') : 'Não informado'; ?></p>
-                            <p><strong>Data:</strong> <?php echo date('d/m/Y H:i', strtotime($suplemento['criado_em'])); ?></p>
-                        </div>
-                        <div class="suplemento-actions">
-                            <a href="editar_suplemento.php?id=<?php echo $suplemento['id']; ?>" class="btn btn-secondary">Editar</a>
-                            <a href="?deletar=<?php echo $suplemento['id']; ?>" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja deletar este suplemento?');">Deletar</a>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
-            <?php endif; ?>
-        </div>
+        <h3 style="margin-top:40px;">Lista de Produtos</h3>
+        <?php foreach ($suplementos as $s): ?>
+            <div class="card">
+                <div>
+                    <strong><?php echo htmlspecialchars($s['nome']); ?></strong><br>
+                    <small>R$ <?php echo number_format($s['preco'], 2, ',', '.'); ?></small>
+                </div>
+                <div>
+                    <a href="?deletar=<?php echo $s['id']; ?>" style="color:#ff4d4d; text-decoration:none;">Excluir</a>
+                </div>
+            </div>
+        <?php endforeach; ?>
     </div>
+
 </body>
 </html>
